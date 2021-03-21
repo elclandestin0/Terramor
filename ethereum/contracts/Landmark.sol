@@ -70,6 +70,7 @@ contract Landmark {
         landmarkAddress = _landmarkAddress;
         tokenWorth = _tokenWorth;
         uniqueHash = _uniqueHash;
+        salt = _salt;
         creator = msg.sender;
     }
 
