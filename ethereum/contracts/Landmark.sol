@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.7.4;
 
+// this contract is a factory to create other landmarks 
 contract LandmarkFactory {
+    // [] that stores all the added landmarks 
     Landmark[] public addedLandmarks;
 
     function createLandmark(
@@ -10,7 +12,15 @@ contract LandmarkFactory {
         string memory _landmarkAddress,
         uint256 _tokenWorth
     ) public {
+
+        // this is a unique salt that takes the current 
+        // block.timestamp to be added to the encoding 
+        // argument as a uniqueHash.
         uint256 _salt = block.timestamp;
+
+        // uniqueHash that gets created from the object 
+        // variables that goes into creating this landmark
+        // + the hash.
         bytes32 _uniqueHash =
             keccak256(
                 abi.encodePacked(
@@ -21,6 +31,8 @@ contract LandmarkFactory {
                     _salt
                 )
             );
+        
+        // Create the new landmark
         Landmark landmark =
             new Landmark(
                 _name,
@@ -38,6 +50,8 @@ contract LandmarkFactory {
     }
 }
 
+// Landmark is a unique marker on the map with name, latLng, address, token worth
+// and unique salt. 
 contract Landmark {
     string name;
     string latLng;
@@ -47,7 +61,7 @@ contract Landmark {
     uint256 salt;
     bytes32 uniqueHash;
     mapping(uint256 => address payable) public usersDiscovered;
-    address creator;
+    address public creator;
 
     // emit when a landmark is scanned
     event LandmarkScanned(
@@ -69,11 +83,13 @@ contract Landmark {
         latLng = _latLng;
         landmarkAddress = _landmarkAddress;
         tokenWorth = _tokenWorth;
-        uniqueHash = _uniqueHash;
         salt = _salt;
+        uniqueHash = _uniqueHash;
         creator = msg.sender;
     }
 
+    // this function is only used by the creator of this contract (the factory controller) and
+    // it is explicitly used to create unique QR Codes.
     function returnSummary()
         public
         view
@@ -83,12 +99,16 @@ contract Landmark {
             string memory,
             string memory,
             uint256,
-            uint256
+            uint256,
+            address
         )
     {
-        return (name, latLng, landmarkAddress, tokenWorth, salt);
+        return (name, latLng, landmarkAddress, tokenWorth, salt, address(this));
     }
 
+    // when the user scans the QR code at a specific landmark, it returns the regular variables
+    // of the landmark in addition to the unique salt. this, when it's hashed, will be compared 
+    // to the uniqueHash state of this contract. 
     function scanLandmark(
         string memory _name,
         string memory _latLng,
@@ -108,7 +128,7 @@ contract Landmark {
             );
         require(_hash == uniqueHash);
         usersDiscovered[userIndex++] = msg.sender;
-        // transfer money here
+        // transfer money here (?)
         emit LandmarkScanned(msg.sender, name, latLng, tokenWorth);
     }
 
