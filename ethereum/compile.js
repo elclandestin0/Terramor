@@ -31,12 +31,13 @@ const input = {
   },
 };
 const output = JSON.parse(solc.compile(JSON.stringify(input)));
+console.log(output);
 const contracts = output["contracts"]["Landmark.sol"];
 
 // Step 4. create a new build directory
 fs.ensureDirSync(build);
 
-// Step 5. write the output of both contracts into the build
+// // Step 5. write the output of both contracts into the build
 for (let contract in contracts) {
   fs.outputJsonSync(
     path.resolve(build, contract + ".json"),

@@ -4,7 +4,7 @@
   "description": "Geolocation app to find landmarks around your city and receive crypto coins in return!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,8 @@
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.2.4",
     "fs-extra": "^9.1.0",
-    "ganache": "^6.4.4",
+    "ganache-cli": "^6.12.2",
+    "mocha": "^8.3.2",
     "solc": "^0.7.4",
     "web3": "^1.3.4"
   }
