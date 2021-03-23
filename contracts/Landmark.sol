@@ -1,9 +1,20 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.7.4;
+pragma solidity ^0.8.0;
 
 // ERC20 Standard by OpenZeppelin
-import "../../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
+/**
+    @title TerraCoin
+    @author Memo Khoury
+    @dev TerraCoins are issued to users who find Landmarks after they scan a 
+    respective QR Code of a Landmark!
+ */
+contract TerraCoin is ERC20 {
+    constructor() ERC20("TerraCoin", "TC") {
+        _mint(msg.sender, 1000);
+    }
+}
 /// @title this contract is a factory to create other landmarks
 /// @author Memo Khoury
 /// @dev add stuff here later
@@ -78,14 +89,14 @@ contract LandmarkFactory {
     verified and the user is transferred the respective amount of TerraCoins.
  */
 contract Landmark is TerraCoin {
-    string name;
+    string landmarkName;
     string latLng;
     string landmarkAddress;
     uint256 public tokenWorth;
     uint256 public userIndex = 0;
     uint256 salt;
     bytes32 uniqueHash;
-    mapping(uint256 => address payable) public usersDiscovered;
+    mapping(uint256 => address) public usersDiscovered;
     address public manager;
 
     // emit when a landmark is scanned
@@ -105,7 +116,7 @@ contract Landmark is TerraCoin {
         bytes32 _uniqueHash,
         address _creator
     ) {
-        name = _name;
+        landmarkName = _name;
         latLng = _latLng;
         landmarkAddress = _landmarkAddress;
         tokenWorth = _tokenWorth;
@@ -129,7 +140,7 @@ contract Landmark is TerraCoin {
             address
         )
     {
-        return (name, latLng, landmarkAddress, tokenWorth, salt, address(this));
+        return (landmarkName, latLng, landmarkAddress, tokenWorth, salt, address(this));
     }
 
     // when the user scans the QR code at a specific landmark, it returns the regular variables
@@ -155,24 +166,11 @@ contract Landmark is TerraCoin {
         require(_hash == uniqueHash);
         usersDiscovered[userIndex++] = msg.sender;
         transferFrom(manager, msg.sender, _tokenWorth);
-        // transfer money here (?)
-        emit LandmarkScanned(msg.sender, name, latLng, tokenWorth);
+        emit LandmarkScanned(msg.sender, _name, _latLng, _tokenWorth);
     }
 
     modifier isCreator() {
         require(msg.sender == manager);
         _;
-    }
-}
-
-/**
-    @title TerraCoin
-    @author Memo Khoury
-    @dev TerraCoins are issued to users who find Landmarks after they scan a 
-    respective QR Code of a Landmark!
- */
-contract TerraCoin is ERC20 {
-    constructor() ERC20("TerraCoin", "TC") {
-        _mint(msg.sender, 1000000);
     }
 }

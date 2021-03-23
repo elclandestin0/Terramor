@@ -10,9 +10,9 @@ const build = path.resolve(__dirname, "build");
 fs.removeSync(build);
 
 // Step 2. Read the Landmark.sol script
-const landmarkPath = path.resolve(__dirname, "contracts", "Landmark.sol");
-const source = fs.readFileSync(landmarkPath, "utf8");
+const landmarkPath = path.resolve(__dirname, "..", "contracts", "Landmark.sol");
 
+const source = fs.readFileSync(landmarkPath, "utf8");
 // Step 3. Compile both contracts (note: this is how solc
 // compiles since ^0.5.0)
 const input = {
@@ -20,7 +20,7 @@ const input = {
   sources: {
     "Landmark.sol": {
       content: source,
-    },
+    }
   },
   settings: {
     outputSelection: {
