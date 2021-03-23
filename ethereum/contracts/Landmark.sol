@@ -1,7 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.7.4;
 
-// this contract is a factory to create other landmarks
+// ERC20 Standard by OpenZeppelin
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.0.0/contracts/token/ERC20/ERC20.sol";
+
+// Ownable standard by OpenZeppelin
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.0.0/contracts/access/Ownable.sol";
+
+/// @title this contract is a factory to create other landmarks
+/// @author Memo Khoury
+/// @dev add stuff here later
 contract LandmarkFactory {
     // [] that stores all the added landmarks
     Landmark[] public landmarks;
@@ -48,8 +56,31 @@ contract LandmarkFactory {
     }
 }
 
-// Landmark is a unique marker on the map with name, latLng, address, token worth
-// and unique salt.
+/**
+    @title Landmark
+    @author Memo Khoury
+    @dev the Landmark contract follows the OpenZeppelin Ownable standard.  
+    A Landmark is created by the Factory owner and is passed down basic 
+    values to identify it, such as the name, latLng and landmarkAddress. 
+    Each Landmark has it's own tokenWorth (measured in TerraCoin). Harder 
+    to find Landmarks are worth more TerraCoins!
+
+    In addition to basic information to identify a Landmark, a Landmark 
+    also has a salt (measured in the Block.timestamp at the moment of 
+    creation) and a uniqueHash. Only the Landmark creator can return the 
+    summary of the contract. The reason why we'd want the summary back is 
+    to create the QR Code on the front-end of our application, which 
+    attaches the name, latLng, landmarkAddress, toklenWorth, salt, 
+    uniqueHash  and  the address of the respective Landmark contract.
+    
+    This ensures that when the  user scans the QRCode, it sends back the 
+    information to this contract. The information is passed on to 
+    scanLandmark() and is hashed by keccak256. After that, we compare the
+    unioqueHash in this contract compared to the hash we just created after
+    the user scans the landmark. If both hashes are equal, the Landmark is 
+    verified and the user is transferred the respective amount of TerraCoins.
+ */
+
 contract Landmark {
     string name;
     string latLng;
@@ -135,4 +166,19 @@ contract Landmark {
         require(msg.sender == manager);
         _;
     }
+}
+
+/**
+    @title TerraCoin
+    @author Memo Khoury
+    @dev TerraCoins are issued to users who find Landmarks after they scan a 
+    respective QR Code of a Landmark!
+ */
+contract TerraCoin is ERC20 {
+
+    constructor (string memory name, string memory symbol, uint supply) ERC20(name, symbol) {
+        _mint(msg.sender, supply);
+    }
+
+    function transfer(address _recipient, uint256 amount)  
 }
