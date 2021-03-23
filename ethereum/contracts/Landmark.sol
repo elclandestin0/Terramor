@@ -2,10 +2,7 @@
 pragma solidity ^0.7.4;
 
 // ERC20 Standard by OpenZeppelin
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.0.0/contracts/token/ERC20/ERC20.sol";
-
-// Ownable standard by OpenZeppelin
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.0.0/contracts/access/Ownable.sol";
+import "../../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 /// @title this contract is a factory to create other landmarks
 /// @author Memo Khoury
@@ -80,8 +77,7 @@ contract LandmarkFactory {
     the user scans the landmark. If both hashes are equal, the Landmark is 
     verified and the user is transferred the respective amount of TerraCoins.
  */
-
-contract Landmark {
+contract Landmark is TerraCoin {
     string name;
     string latLng;
     string landmarkAddress;
@@ -158,6 +154,7 @@ contract Landmark {
             );
         require(_hash == uniqueHash);
         usersDiscovered[userIndex++] = msg.sender;
+        transferFrom(manager, msg.sender, _tokenWorth);
         // transfer money here (?)
         emit LandmarkScanned(msg.sender, name, latLng, tokenWorth);
     }
@@ -175,10 +172,7 @@ contract Landmark {
     respective QR Code of a Landmark!
  */
 contract TerraCoin is ERC20 {
-
-    constructor (string memory name, string memory symbol, uint supply) ERC20(name, symbol) {
-        _mint(msg.sender, supply);
+    constructor() ERC20("TerraCoin", "TC") {
+        _mint(msg.sender, 1000000);
     }
-
-    function transfer(address _recipient, uint256 amount)  
 }
