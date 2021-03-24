@@ -7,20 +7,29 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 /**
     @title TerraCoin
     @author Memo Khoury
-    @dev TerraCoins are issued to users who find Landmarks after they scan a 
-    respective QR Code of a Landmark!
+    @dev TerraCoins are issued to users who find Landmarks after 
+    they scan a respective QR Code of a Landmark!
  */
 contract TerraCoin is ERC20 {
     constructor() ERC20("TerraCoin", "TC") {
         _mint(msg.sender, 1000);
     }
 }
-/// @title this contract is a factory to create other landmarks
-/// @author Memo Khoury
-/// @dev add stuff here later
+
+/**
+    @title this contract is a factory to create other landmarks
+    @author Memo Khoury
+    @dev The landmark factory takes the name, latitude + longitude,
+    real world address and the token worth, which then creates the
+    landmark. The salt is taken from the block.timestamp to add to 
+    the uniqueness of each landmark. 
+    
+    Afterwards, the landmark data combined with the salt is hashed to
+    create a unique hash, which finally creates the landmark. 
+ */
 contract LandmarkFactory {
     // [] that stores all the added landmarks
-    Landmark[] public landmarks;
+    Landmark[] private _landmarks;
 
     function createLandmark(
         string memory _name,
@@ -56,18 +65,20 @@ contract LandmarkFactory {
                 _uniqueHash,
                 msg.sender
             );
-        landmarks.push(landmark);
+        _landmarks.push(landmark);
     }
 
-    function getAllLandmarks() public view returns (Landmark[] memory) {
-        return landmarks;
+    function landmarks() public view returns (Landmark[] memory) {
+        return _landmarks;
     }
 }
 
 /**
     @title Landmark
     @author Memo Khoury
-    @dev the Landmark contract follows the OpenZeppelin Ownable standard.  
+    @dev the Landmark contract inherits from TerraCoin, which follows the
+    OpenZeppelin ERC20 Standard.
+
     A Landmark is created by the Factory owner and is passed down basic 
     values to identify it, such as the name, latLng and landmarkAddress. 
     Each Landmark has it's own tokenWorth (measured in TerraCoin). Harder 
@@ -89,15 +100,23 @@ contract LandmarkFactory {
     verified and the user is transferred the respective amount of TerraCoins.
  */
 contract Landmark is TerraCoin {
-    string landmarkName;
-    string latLng;
-    string landmarkAddress;
-    uint256 public tokenWorth;
-    uint256 public userIndex = 0;
-    uint256 salt;
-    bytes32 uniqueHash;
-    mapping(uint256 => address) public usersDiscovered;
-    address public manager;
+    string private _landmarkName;
+    string private _latLng;
+    string private _landmarkAddress;
+
+    // the worth of each landmark in TerraCoins
+    uint256 private _tokenWorth;
+
+    // the user index for usersDiscvoered
+    uint256 private _userIndex = 0;
+
+    // the unique salt and hash for each Landmark
+    uint256 private _salt;
+    bytes32 private _uniqueHash;
+
+    // how many users discovered this landmark
+    mapping(uint256 => address) private _usersDiscovered;
+    address private _manager;
 
     // emit when a landmark is scanned
     event LandmarkScanned(
@@ -108,21 +127,48 @@ contract Landmark is TerraCoin {
     );
 
     constructor(
-        string memory _name,
-        string memory _latLng,
-        string memory _landmarkAddress,
-        uint256 _tokenWorth,
-        uint256 _salt,
-        bytes32 _uniqueHash,
-        address _creator
+        string memory landmarkName_,
+        string memory latLng_,
+        string memory landmarkAddress_,
+        uint256 tokenWorth_,
+        uint256 salt_,
+        bytes32 uniqueHash_,
+        address creator_
     ) {
-        landmarkName = _name;
-        latLng = _latLng;
-        landmarkAddress = _landmarkAddress;
-        tokenWorth = _tokenWorth;
-        salt = _salt;
-        uniqueHash = _uniqueHash;
-        manager = _creator;
+        _landmarkName = landmarkName_;
+        _latLng = latLng_;
+        _landmarkAddress = landmarkAddress_;
+        _tokenWorth = tokenWorth_;
+        _salt = salt_;
+        _uniqueHash = uniqueHash_;
+        _manager = creator_;
+    }
+
+    // All the getters. We don't include the hash the salt for both security  
+    // and User Experience reasons
+
+    function landmarkName() public view returns (string memory) {
+        return _landmarkName;
+    }
+
+    function latLng() public view returns (string memory) {
+        return _latLng;
+    }
+
+    function landmarkAddress() public view returns (string memory) {
+        return _landmarkAddress;
+    }
+
+    function tokenWorth() public view returns (uint) {
+        return _tokenWorth;
+    }
+
+    function usersDiscovered(uint userIndex_) public view returns(address) {
+        return _usersDiscovered[userIndex_];
+    }
+    
+    function manager() public view returns(address) {
+        return _manager;
     }
 
     // this function is only used by the creator of this contract (the factory controller) and
@@ -130,7 +176,7 @@ contract Landmark is TerraCoin {
     function returnSummary()
         public
         view
-        isCreator
+        isManager
         returns (
             string memory,
             string memory,
@@ -140,37 +186,37 @@ contract Landmark is TerraCoin {
             address
         )
     {
-        return (landmarkName, latLng, landmarkAddress, tokenWorth, salt, address(this));
+        return (_landmarkName, _latLng, _landmarkAddress, _tokenWorth, _salt, address(this));
     }
 
     // when the user scans the QR code at a specific landmark, it returns the regular variables
     // of the landmark in addition to the unique salt. this, when it's hashed, will be compared
     // to the uniqueHash state of this contract.
     function scanLandmark(
-        string memory _name,
-        string memory _latLng,
-        string memory _landmarkAddress,
-        uint256 _tokenWorth,
-        uint256 _salt
+        string memory landmarkName_,
+        string memory latLng_,
+        string memory landmarkAddress_,
+        uint256 tokenWorth_,
+        uint256 salt_
     ) public {
-        bytes32 _hash =
+        bytes32 uniqueHash =
             keccak256(
                 abi.encodePacked(
-                    _name,
-                    _latLng,
-                    _landmarkAddress,
-                    _tokenWorth,
-                    _salt
+                    landmarkName_,
+                    latLng_,
+                    landmarkAddress_,
+                    tokenWorth_,
+                    salt_
                 )
             );
-        require(_hash == uniqueHash);
-        usersDiscovered[userIndex++] = msg.sender;
-        transferFrom(manager, msg.sender, _tokenWorth);
-        emit LandmarkScanned(msg.sender, _name, _latLng, _tokenWorth);
+        require(uniqueHash == _uniqueHash);
+        _usersDiscovered[_userIndex++] = msg.sender;
+        emit LandmarkScanned(msg.sender, landmarkName_, latLng_, tokenWorth_);
     }
 
-    modifier isCreator() {
-        require(msg.sender == manager);
+    // check if the sender is the manager
+    modifier isManager() {
+        require(msg.sender == _manager);
         _;
     }
 }
