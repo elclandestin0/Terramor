@@ -107,6 +107,7 @@ beforeEach(async () => {
     gas: "5555555",
   });
 });
+
 // BEGIN TESTS
 describe("Landmark test", () => {
   it("deploys a factory", () => {

@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 // ERC20 Standard by OpenZeppelin
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
+
 /**
     @title TerraCoin
     @author Memo Khoury

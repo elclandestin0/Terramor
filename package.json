@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/mkhoury93/Terramor#readme",
   "dependencies": {
-    "@truffle/hdwallet-provider": "^1.2.4",
+    "@openzeppelin/upgrades": "^2.8.0",
+    "@truffle/hdwallet-provider": "^1.0.40",
     "fs-extra": "^9.1.0",
     "ganache-cli": "^6.12.2",
     "mocha": "^8.3.2",
