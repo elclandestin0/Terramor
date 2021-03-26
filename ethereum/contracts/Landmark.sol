@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 // ERC20 Standard by OpenZeppelin
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-
 /**
     @title TerraCoin
     @author Memo Khoury
@@ -32,7 +31,12 @@ contract LandmarkFactory {
     // [] that stores all the added landmarks
     Landmark[] private _deployedLandmarks;
     LandmarkInformation[] private _landmarks;
-    
+    address private _manager;
+
+    constructor() {
+        _manager = msg.sender;
+    }
+
     struct LandmarkInformation {
         string _name;
         string _latLng;
@@ -40,12 +44,14 @@ contract LandmarkFactory {
         uint256 _tokenWorth;
     }
 
+    // function to create a landmark. Only the owner can
+    // create landmarks
     function createLandmark(
         string memory _name,
         string memory _latLng,
         string memory _landmarkAddress,
         uint256 _tokenWorth
-    ) public {
+    ) public isManager {
         // this is a unique salt that takes the current
         // block.timestamp to be added to the encoding
         // argument as a uniqueHash.
@@ -75,7 +81,9 @@ contract LandmarkFactory {
                 msg.sender
             );
         _deployedLandmarks.push(landmark);
-        _landmarks.push(LandmarkInformation(_name, _latLng, _landmarkAddress, _tokenWorth));
+        _landmarks.push(
+            LandmarkInformation(_name, _latLng, _landmarkAddress, _tokenWorth)
+        );
     }
 
     function deployedLandmarks() public view returns (Landmark[] memory) {
@@ -84,6 +92,11 @@ contract LandmarkFactory {
 
     function landmarks() public view returns (LandmarkInformation[] memory) {
         return _landmarks;
+    }
+
+    modifier isManager() {
+        require(msg.sender == _manager);
+        _;
     }
 }
 
@@ -158,7 +171,7 @@ contract Landmark is TerraCoin {
         _manager = creator_;
     }
 
-    // All the getters. We don't include the hash the salt for both security  
+    // All the getters. We don't include the hash the salt for both security
     // and User Experience reasons
 
     function landmarkName() public view returns (string memory) {
@@ -173,15 +186,15 @@ contract Landmark is TerraCoin {
         return _landmarkAddress;
     }
 
-    function tokenWorth() public view returns (uint) {
+    function tokenWorth() public view returns (uint256) {
         return _tokenWorth;
     }
 
-    function usersDiscovered(uint userIndex_) public view returns(address) {
+    function usersDiscovered(uint256 userIndex_) public view returns (address) {
         return _usersDiscovered[userIndex_];
     }
-    
-    function manager() public view returns(address) {
+
+    function manager() public view returns (address) {
         return _manager;
     }
 
@@ -200,7 +213,14 @@ contract Landmark is TerraCoin {
             address
         )
     {
-        return (_landmarkName, _latLng, _landmarkAddress, _tokenWorth, _salt, address(this));
+        return (
+            _landmarkName,
+            _latLng,
+            _landmarkAddress,
+            _tokenWorth,
+            _salt,
+            address(this)
+        );
     }
 
     // when the user scans the QR code at a specific landmark, it returns the regular variables

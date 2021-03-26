@@ -1,5 +1,5 @@
 import React from "react";
-import landmarkFactory from "../landmarkFactory";
+import landmarkFactory from "../ethereum/landmarkFactory";
 
 const TestPage = ({landmarks}) => {
     const renderLandmarks = () => {
