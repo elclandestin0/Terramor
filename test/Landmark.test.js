@@ -83,7 +83,7 @@ beforeEach(async () => {
     });
 
   // get our landmark address ..
-  const landmarkAddresses = await factory.methods.landmarks().call();
+  const landmarkAddresses = await factory.methods.deployedLandmarks().call();
   landmarkAddress = landmarkAddresses[0];
 
   // .. and deploy it
@@ -115,6 +115,11 @@ describe("Landmark test", () => {
   });
   it("adds a landmark", () => {
     assert.ok(landmark.options.address);
+  });
+  it("returns the array of LandmarkInformation structs", async () => {
+    const landmarks = await factory.methods.landmarks().call();
+    console.log(landmarks);
+    assert.ok(landmarks);
   });
   it("landmark owner is landmark creator", async () => {
     const manager = await landmark.methods.manager().call();

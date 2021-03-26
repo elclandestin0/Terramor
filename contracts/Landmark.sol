@@ -30,7 +30,15 @@ contract TerraCoin is ERC20 {
  */
 contract LandmarkFactory {
     // [] that stores all the added landmarks
-    Landmark[] private _landmarks;
+    Landmark[] private _deployedLandmarks;
+    LandmarkInformation[] private _landmarks;
+    
+    struct LandmarkInformation {
+        string _name;
+        string _latLng;
+        string _landmarkAddress;
+        uint256 _tokenWorth;
+    }
 
     function createLandmark(
         string memory _name,
@@ -66,10 +74,15 @@ contract LandmarkFactory {
                 _uniqueHash,
                 msg.sender
             );
-        _landmarks.push(landmark);
+        _deployedLandmarks.push(landmark);
+        _landmarks.push(LandmarkInformation(_name, _latLng, _landmarkAddress, _tokenWorth));
     }
 
-    function landmarks() public view returns (Landmark[] memory) {
+    function deployedLandmarks() public view returns (Landmark[] memory) {
+        return _deployedLandmarks;
+    }
+
+    function landmarks() public view returns (LandmarkInformation[] memory) {
         return _landmarks;
     }
 }
