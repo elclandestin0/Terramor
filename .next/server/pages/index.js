@@ -3,6 +3,12 @@ module.exports =
 /******/ 	// The module cache
 /******/ 	var installedModules = require('../ssr-module-cache.js');
 /******/
+/******/ 	// object to store loaded chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	var installedChunks = {
+/******/ 		"pages/index": 0
+/******/ 	};
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
@@ -33,6 +39,26 @@ module.exports =
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// require() chunk loading for javascript
+/******/
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] !== 0) {
+/******/ 			var chunk = require("../" + ({}[chunkId]||chunkId) + ".js");
+/******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
+/******/ 			for(var moduleId in moreModules) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 			for(var i = 0; i < chunkIds.length; i++)
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -86,6 +112,13 @@ module.exports =
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/ 	// uncaught error handler for webpack runtime
+/******/ 	__webpack_require__.oe = function(err) {
+/******/ 		process.nextTick(function() {
+/******/ 			throw err; // catch this error by using import().catch()
+/******/ 		});
+/******/ 	};
+/******/
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = "./pages/index.js");
@@ -132,11 +165,22 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var web3
 /*!************************!*\
   !*** ./pages/index.js ***!
   \************************/
-/*! exports provided: getServerSideProps, default */
+/*! exports provided: default, getServerSideProps */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getServerSideProps\", function() { return getServerSideProps; });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _ethereum_landmarkFactory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ethereum/landmarkFactory */ \"./ethereum/landmarkFactory.js\");\n\nvar _jsxFileName = \"/Users/mkcerise/Desktop/solidity-projects/Terramor/pages/index.js\";\n\n\n\nconst TestPage = ({\n  landmarks\n}) => {\n  const renderLandmarks = () => {\n    console.log(landmarks);\n  };\n\n  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__[\"jsxDEV\"])(\"div\", {\n    children: [\"Yo\", renderLandmarks()]\n  }, void 0, true, {\n    fileName: _jsxFileName,\n    lineNumber: 8,\n    columnNumber: 13\n  }, undefined);\n};\n\nasync function getServerSideProps() {\n  const landmarks = await _ethereum_landmarkFactory__WEBPACK_IMPORTED_MODULE_2__[\"default\"].methods.landmarks().call();\n  return {\n    props: {\n      landmarks\n    }\n  };\n}\n/* harmony default export */ __webpack_exports__[\"default\"] = (TestPage);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9wYWdlcy9pbmRleC5qcz80NGQ4Il0sIm5hbWVzIjpbIlRlc3RQYWdlIiwibGFuZG1hcmtzIiwicmVuZGVyTGFuZG1hcmtzIiwiY29uc29sZSIsImxvZyIsImdldFNlcnZlclNpZGVQcm9wcyIsImxhbmRtYXJrRmFjdG9yeSIsIm1ldGhvZHMiLCJjYWxsIiwicHJvcHMiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBO0FBQ0E7O0FBRUEsTUFBTUEsUUFBUSxHQUFHLENBQUM7QUFBQ0M7QUFBRCxDQUFELEtBQWlCO0FBQzlCLFFBQU1DLGVBQWUsR0FBRyxNQUFNO0FBQzFCQyxXQUFPLENBQUNDLEdBQVIsQ0FBWUgsU0FBWjtBQUNILEdBRkQ7O0FBR0Esc0JBQVE7QUFBQSxxQkFBUUMsZUFBZSxFQUF2QjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFBUjtBQUNILENBTEQ7O0FBT08sZUFBZUcsa0JBQWYsR0FBcUM7QUFDeEMsUUFBTUosU0FBUyxHQUFHLE1BQU1LLGlFQUFlLENBQUNDLE9BQWhCLENBQXdCTixTQUF4QixHQUFvQ08sSUFBcEMsRUFBeEI7QUFDQSxTQUFPO0FBQUNDLFNBQUssRUFBRTtBQUFDUjtBQUFEO0FBQVIsR0FBUDtBQUNIO0FBRWNELHVFQUFmIiwiZmlsZSI6Ii4vcGFnZXMvaW5kZXguanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSBcInJlYWN0XCI7XG5pbXBvcnQgbGFuZG1hcmtGYWN0b3J5IGZyb20gXCIuLi9ldGhlcmV1bS9sYW5kbWFya0ZhY3RvcnlcIjtcblxuY29uc3QgVGVzdFBhZ2UgPSAoe2xhbmRtYXJrc30pID0+IHtcbiAgICBjb25zdCByZW5kZXJMYW5kbWFya3MgPSAoKSA9PiB7XG4gICAgICAgIGNvbnNvbGUubG9nKGxhbmRtYXJrcyk7XG4gICAgfVxuICAgIHJldHVybiAoPGRpdj5Zb3tyZW5kZXJMYW5kbWFya3MoKX08L2Rpdj4pXG59XG5cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBnZXRTZXJ2ZXJTaWRlUHJvcHMgKCkge1xuICAgIGNvbnN0IGxhbmRtYXJrcyA9IGF3YWl0IGxhbmRtYXJrRmFjdG9yeS5tZXRob2RzLmxhbmRtYXJrcygpLmNhbGwoKTtcbiAgICByZXR1cm4ge3Byb3BzOiB7bGFuZG1hcmtzfX07XG59XG5cbmV4cG9ydCBkZWZhdWx0IFRlc3RQYWdlOyJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./pages/index.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getServerSideProps\", function() { return getServerSideProps; });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _ethereum_landmarkFactory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ethereum/landmarkFactory */ \"./ethereum/landmarkFactory.js\");\n/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/dynamic */ \"next/dynamic\");\n/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_3__);\n\nvar _jsxFileName = \"/Users/mkcerise/Desktop/solidity-projects/Terramor/pages/index.js\";\n // our landmark Factry deployed on Rinkeby\n\n // dynamic import helps with CSR for our map\n\n\nconst Map = next_dynamic__WEBPACK_IMPORTED_MODULE_3___default()(() => __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../components/Map */ \"./components/Map.js\")), {\n  loading: () => \"Loading...\",\n  ssr: false,\n  loadableGenerated: {\n    webpack: () => [/*require.resolve*/(/*! ../components/Map */ \"./components/Map.js\")],\n    modules: [\"../components/Map\"]\n  }\n});\n\nconst Page = ({\n  landmarks\n}) => {\n  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__[\"jsxDEV\"])(\"div\", {\n    children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__[\"jsxDEV\"])(Map, {}, void 0, false, {\n      fileName: _jsxFileName,\n      lineNumber: 17,\n      columnNumber: 7\n    }, undefined)\n  }, void 0, false, {\n    fileName: _jsxFileName,\n    lineNumber: 16,\n    columnNumber: 5\n  }, undefined);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Page);\nasync function getServerSideProps() {\n  const landmarks = await _ethereum_landmarkFactory__WEBPACK_IMPORTED_MODULE_2__[\"default\"].methods.landmarks().call();\n  return {\n    props: {\n      landmarks\n    }\n  };\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9wYWdlcy9pbmRleC5qcz80NGQ4Il0sIm5hbWVzIjpbIk1hcCIsImR5bmFtaWMiLCJsb2FkaW5nIiwic3NyIiwiUGFnZSIsImxhbmRtYXJrcyIsImdldFNlcnZlclNpZGVQcm9wcyIsImxhbmRtYXJrRmFjdG9yeSIsIm1ldGhvZHMiLCJjYWxsIiwicHJvcHMiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7O0NBRUE7O0NBR0E7O0FBQ0E7QUFFQSxNQUFNQSxHQUFHLEdBQUdDLG1EQUFPLENBQUMsTUFBTSw2SEFBUCxFQUFvQztBQUNyREMsU0FBTyxFQUFFLE1BQU0sWUFEc0M7QUFFckRDLEtBQUcsRUFBRSxLQUZnRDtBQUFBO0FBQUEsd0NBQXRCLDhDQUFzQjtBQUFBLGNBQXRCLG1CQUFzQjtBQUFBO0FBQUEsQ0FBcEMsQ0FBbkI7O0FBS0EsTUFBTUMsSUFBSSxHQUFHLENBQUM7QUFBRUM7QUFBRixDQUFELEtBQW1CO0FBQzlCLHNCQUNFO0FBQUEsMkJBQ0UscUVBQUMsR0FBRDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBREY7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQURGO0FBS0QsQ0FORDs7QUFRZUQsbUVBQWY7QUFFTyxlQUFlRSxrQkFBZixHQUFvQztBQUN6QyxRQUFNRCxTQUFTLEdBQUcsTUFBTUUsaUVBQWUsQ0FBQ0MsT0FBaEIsQ0FBd0JILFNBQXhCLEdBQW9DSSxJQUFwQyxFQUF4QjtBQUNBLFNBQU87QUFBRUMsU0FBSyxFQUFFO0FBQUVMO0FBQUY7QUFBVCxHQUFQO0FBQ0QiLCJmaWxlIjoiLi9wYWdlcy9pbmRleC5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyB1c2VTdGF0ZSB9IGZyb20gXCJyZWFjdFwiO1xuXG4vLyBvdXIgbGFuZG1hcmsgRmFjdHJ5IGRlcGxveWVkIG9uIFJpbmtlYnlcbmltcG9ydCBsYW5kbWFya0ZhY3RvcnkgZnJvbSBcIi4uL2V0aGVyZXVtL2xhbmRtYXJrRmFjdG9yeVwiO1xuXG4vLyBkeW5hbWljIGltcG9ydCBoZWxwcyB3aXRoIENTUiBmb3Igb3VyIG1hcFxuaW1wb3J0IGR5bmFtaWMgZnJvbSBcIm5leHQvZHluYW1pY1wiO1xuXG5jb25zdCBNYXAgPSBkeW5hbWljKCgpID0+IGltcG9ydChcIi4uL2NvbXBvbmVudHMvTWFwXCIpLCB7XG4gIGxvYWRpbmc6ICgpID0+IFwiTG9hZGluZy4uLlwiLFxuICBzc3I6IGZhbHNlLFxufSk7XG5cbmNvbnN0IFBhZ2UgPSAoeyBsYW5kbWFya3MgfSkgPT4ge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8TWFwIC8+XG4gICAgPC9kaXY+XG4gICk7XG59O1xuXG5leHBvcnQgZGVmYXVsdCBQYWdlO1xuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gZ2V0U2VydmVyU2lkZVByb3BzKCkge1xuICBjb25zdCBsYW5kbWFya3MgPSBhd2FpdCBsYW5kbWFya0ZhY3RvcnkubWV0aG9kcy5sYW5kbWFya3MoKS5jYWxsKCk7XG4gIHJldHVybiB7IHByb3BzOiB7IGxhbmRtYXJrcyB9IH07XG59XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./pages/index.js\n");
+
+/***/ }),
+
+/***/ "next/dynamic":
+/*!*******************************!*\
+  !*** external "next/dynamic" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"next/dynamic\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJuZXh0L2R5bmFtaWNcIj82ZDNmIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6Im5leHQvZHluYW1pYy5qcyIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID0gcmVxdWlyZShcIm5leHQvZHluYW1pY1wiKTsiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///next/dynamic\n");
 
 /***/ }),
 
@@ -148,6 +192,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"react\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJyZWFjdFwiPzU4OGUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEiLCJmaWxlIjoicmVhY3QuanMiLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IHJlcXVpcmUoXCJyZWFjdFwiKTsiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///react\n");
+
+/***/ }),
+
+/***/ "react-map-gl":
+/*!*******************************!*\
+  !*** external "react-map-gl" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-map-gl\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJyZWFjdC1tYXAtZ2xcIj81YWIzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6InJlYWN0LW1hcC1nbC5qcyIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID0gcmVxdWlyZShcInJlYWN0LW1hcC1nbFwiKTsiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///react-map-gl\n");
 
 /***/ }),
 
