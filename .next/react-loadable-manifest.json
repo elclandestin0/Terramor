@@ -2,419 +2,419 @@
   "../components/Map": [
     {
       "id": "./components/Map.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/createClass.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/defineProperty.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/extends.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/inherits.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/iterableToArray.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/typeof.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/typeof.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@math.gl/web-mercator/dist/esm/assert.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@math.gl/web-mercator/dist/esm/fit-bounds.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@math.gl/web-mercator/dist/esm/fly-to-viewport.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@math.gl/web-mercator/dist/esm/get-bounds.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@math.gl/web-mercator/dist/esm/index.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@math.gl/web-mercator/dist/esm/math-utils.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@math.gl/web-mercator/dist/esm/normalize-viewport-props.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@math.gl/web-mercator/dist/esm/web-mercator-utils.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/@math.gl/web-mercator/dist/esm/web-mercator-viewport.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/gl-matrix/esm/common.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/gl-matrix/esm/mat4.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/gl-matrix/esm/vec2.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/gl-matrix/esm/vec3.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/gl-matrix/esm/vec4.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/hammerjs/hammer.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mapbox-gl/dist/mapbox-gl.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/constants.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/event-manager.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/index.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/inputs/contextmenu-input.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/inputs/key-input.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/inputs/move-input.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/inputs/wheel-input.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/utils/event-registrar.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/utils/event-utils.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/utils/globals.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/utils/hammer-overrides.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/mjolnir.js/dist/esm/utils/hammer.browser.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/next/dist/compiled/webpack/global.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/next/node_modules/@babel/runtime/helpers/esm/defineProperty.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/process/browser.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/prop-types/checkPropTypes.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/prop-types/factoryWithTypeCheckers.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/prop-types/index.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/prop-types/lib/ReactPropTypesSecret.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-is/cjs/react-is.development.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-is/index.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/attribution-control.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/base-control.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/draggable-control.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/fullscreen-control.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/geolocate-control.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/interactive-map.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/layer.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/map-context.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/marker.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/navigation-control.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/popup.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/scale-control.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/source.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/static-map.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/components/use-map-control.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/index.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/mapbox/mapbox.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/overlays/canvas-overlay.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/overlays/html-overlay.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/overlays/svg-overlay.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/assert.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/crisp-pixel.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/deep-equal.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/dynamic-position.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/geolocate-utils.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/globals.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/map-constraints.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/map-controller.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/map-state.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/mapboxgl.browser.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/math-utils.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/set-rtl-text-plugin.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/style-utils.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/transition-manager.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/transition/index.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/transition/linear-interpolator.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/transition/transition-interpolator.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/transition/transition-utils.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/transition/viewport-fly-to-interpolator.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/use-isomorphic-layout-effect.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/react-map-gl/dist/esm/utils/version.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     },
     {
       "id": "./node_modules/viewport-mercator-project/module.js",
-      "file": "static/chunks/1.js"
+      "file": "static/chunks/2.js"
     }
   ],
   "./dev/noop": [
