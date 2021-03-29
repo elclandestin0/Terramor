@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mkhoury93/Terramor#readme",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@openzeppelin/upgrades": "^2.8.0",
     "@truffle/hdwallet-provider": "^1.0.40",
     "fs-extra": "^9.1.0",

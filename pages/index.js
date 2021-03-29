@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-// our landmark Factry deployed on Rinkeby
+// our landmark Factory deployed on Rinkeby
 import landmarkFactory from "../ethereum/landmarkFactory";
+import Layout from "../components/Layout";
 
-// dynamic import helps with CSR for our map
+// next.js imports
 import dynamic from "next/dynamic";
 
 // load the map component without SSR
@@ -14,9 +15,9 @@ const Map = dynamic(() => import("../components/Map"), {
 
 const Page = ({ landmarks }) => {
   return (
-    <div>
+    <Layout>
       <Map landmarks={landmarks} />
-    </div>
+    </Layout>
   );
 };
 

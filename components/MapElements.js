@@ -77,7 +77,7 @@ const MapElement = ({ lat, lng, name, landmarkAddress, tokenWorth, index }) => {
                 {tokenWorth} TC 💰
               </Typography>
               <Typography variant="body2" component="p">
-                [{lat},{lng}]
+                [{lat}, {lng}]
               </Typography>
             </CardContent>
           </Popup>
