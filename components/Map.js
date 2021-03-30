@@ -3,6 +3,7 @@ import { useState } from "react";
 // MapBox for react made by a team of developers from uber
 import ReactMapGL from "react-map-gl";
 
+// Terramor imports
 import MapElement from "./MapElements";
 
 export default function Map({ landmarks }) {

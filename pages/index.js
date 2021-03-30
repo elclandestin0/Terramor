@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
 // our landmark Factory deployed on Rinkeby
 import landmarkFactory from "../ethereum/landmarkFactory";
-import Layout from "../components/Layout";
+// import Layout from "../components/Layout";
 
 // next.js imports
 import dynamic from "next/dynamic";
 
-// load the map component without SSR
+// terramor imports
 const Map = dynamic(() => import("../components/Map"), {
+  loading: () => "Loading...",
+  ssr: false,
+});
+
+const Layout = dynamic(() => import("../components/Layout"), {
   loading: () => "Loading...",
   ssr: false,
 });

@@ -6,8 +6,9 @@ import { Marker, Popup } from "react-map-gl";
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+
 
 // styles for the card
 const useStyles = makeStyles({

@@ -7,16 +7,17 @@ const path = require("path");
 const fs = require("fs");
 
 // path to our landmark factory
-const landmarkFactoryPath = path.resolve(
+const terraCoinPath = path.resolve(
   __dirname,
+  "..",
   "artifacts",
   "contracts",
   "Landmark.sol",
-  "LandmarkFactory.json"
+  "TerraCoin.json"
 );
 
 // compiled landmark factory
-const compiledLandmark = fs.readFileSync(landmarkFactoryPath, "utf8");
+const compiledTerraCoin = fs.readFileSync(terraCoinPath, "utf8");
 
 // Set up a Truffle provider and include our mnemonic phrase
 // along with the rinkeby infura node ..
@@ -36,11 +37,10 @@ const deploy = async () => {
   // already inherits  from TerraCoin, anytime we create a
   // Landmark from the Landmark Factory, we also create it's
   //  own TC implementation.
-  const landmarkFactory = await new web3.eth.Contract(JSON.parse(compiledLandmark).abi)
-    .deploy({ data: JSON.parse(compiledLandmark).bytecode })
+  const terraCoin = await new web3.eth.Contract(JSON.parse(compiledTerraCoin).abi)
+    .deploy({ data: JSON.parse(compiledTerraCoin).bytecode })
     .send({ from: accounts[0], gas: "3000000" })
     .catch(err => console.log(err));
-  console.log("contract deployed to: ", landmarkFactory.options.address);
+  console.log("contract deployed to: ", terraCoin.options.address);
 };
 deploy();
-// address of deployment: 0xb905A2506C66F288af71395231A61AAAa4C44984
