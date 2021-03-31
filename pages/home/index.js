@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import web3 from "../../ethereum/web3";
 import terraCoin from "../../ethereum/terraCoin";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
   CardContent,
@@ -17,6 +18,8 @@ const Layout = dynamic(() => import("../../components/Layout"), {
   loading: () => "Loading...",
   ssr: false,
 });
+// our landmark Factory deployed on Rinkeby
+import landmarkFactory from "../../ethereum/landmarkFactory";
 
 // next.js imports
 import dynamic from "next/dynamic";
@@ -35,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home = () => {
+const Home = ({ landmarks }) => {
+  console.log(landmarks);
   const classes = useStyles();
 
   const [account, setAccount] = useState("");
@@ -60,6 +64,39 @@ const Home = () => {
   const truncate = (str) => {
     return str.length > 10 ? str.substring(0, 10) + "..." : str;
   };
+
+  const renderLandmarkList = landmarks.map((landmark, index) => {
+    const name = landmark[0];
+    const landmarkAddress = landmark[2];
+    const img = landmark[3];
+    const tokenWorth = landmark[4];
+    return (
+      <div>
+        <ListItem key={img} alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar src={img} />
+          </ListItemAvatar>
+          <ListItemText
+            primary={name}
+            secondary={
+              <React.Fragment>
+                <Typography
+                  component="span"
+                  variant="body2"
+                  className={classes.inline}
+                  color="textPrimary"
+                >
+                  {tokenWorth} TerraCoins 💰
+                </Typography>
+                {" - " + landmarkAddress}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+      </div>
+    );
+  });
 
   return (
     <Layout>
@@ -86,9 +123,13 @@ const Home = () => {
               Balance
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {balance} TC 💰
+              {balance} TerraCoins 💰
             </Typography>
           </CardContent>
+        </Card>
+        <Card>
+          <CardHeader title="List of Landmarks" />
+          <List className={classes.root}>{renderLandmarkList}</List>
         </Card>
       </Container>
     </Layout>
@@ -96,3 +137,8 @@ const Home = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps() {
+  const landmarks = await landmarkFactory.methods.landmarks().call();
+  return { props: { landmarks } };
+}
