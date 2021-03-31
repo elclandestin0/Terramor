@@ -1,6 +1,22 @@
+// react imports
 import React, { useEffect, useState } from "react";
+
+// terramor imports
+const Layout = dynamic(() => import("../../components/Layout"), {
+  loading: () => "Loading...",
+  ssr: false,
+});
+
+// ethereum imports
 import web3 from "../../ethereum/web3";
 import terraCoin from "../../ethereum/terraCoin";
+import landmarkFactory from "../../ethereum/landmarkFactory";
+import { Link } from "../../routes";
+
+// next.js imports
+import dynamic from "next/dynamic";
+
+// material ui imports
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
@@ -12,20 +28,10 @@ import {
   ListItemText,
   ListItemAvatar,
   Avatar,
+  Button,
+  Container,
+  Typography,
 } from "@material-ui/core";
-// terramor imports
-const Layout = dynamic(() => import("../../components/Layout"), {
-  loading: () => "Loading...",
-  ssr: false,
-});
-// our landmark Factory deployed on Rinkeby
-import landmarkFactory from "../../ethereum/landmarkFactory";
-
-// next.js imports
-import dynamic from "next/dynamic";
-
-// Material UI imports
-import { Container, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: "inline",
   },
+
 }));
 
 const Home = ({ landmarks }) => {
-  console.log(landmarks);
   const classes = useStyles();
 
   const [account, setAccount] = useState("");
@@ -130,6 +136,15 @@ const Home = ({ landmarks }) => {
         <Card>
           <CardHeader title="List of Landmarks" />
           <List className={classes.root}>{renderLandmarkList}</List>
+        </Card>
+        <Card>
+          <CardContent className={classes.button}>
+            <Link route={"/home/new"}>
+              <Button variant="contained" color="primary">
+                Add Landmark
+              </Button>
+            </Link>
+          </CardContent>
         </Card>
       </Container>
     </Layout>
