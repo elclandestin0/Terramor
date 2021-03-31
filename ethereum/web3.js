@@ -1,7 +1,6 @@
 import Web3 from "web3";
 
 let web3;
-
 // if metamask is available in our browser ..
 if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
   // .. then enable it and add it to our web3 provider ..

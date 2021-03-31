@@ -39,7 +39,7 @@ const deploy = async () => {
   //  own TC implementation.
   const landmarkFactory = await new web3.eth.Contract(JSON.parse(compiledLandmark).abi)
     .deploy({ data: JSON.parse(compiledLandmark).bytecode })
-    .send({ from: accounts[0], gas: "3000000" })
+    .send({ from: accounts[0], gas: "5000000" })
     .catch(err => console.log(err));
   console.log("contract deployed to: ", landmarkFactory.options.address);
 };

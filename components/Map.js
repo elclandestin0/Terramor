@@ -22,7 +22,8 @@ export default function Map({ landmarks }) {
     const lat = latLng[0];
     const lng = latLng[1];
     const landmarkAddress = landmark[2];
-    const tokenWorth = landmark[3];
+    const img = landmark[3];
+    const tokenWorth = landmark[4];
     return (
       <MapElement
         lat={lat}
@@ -30,6 +31,7 @@ export default function Map({ landmarks }) {
         name={name}
         landmarkAddress={landmarkAddress}
         tokenWorth={tokenWorth}
+        img={img}
         index={index}
       ></MapElement>
     );

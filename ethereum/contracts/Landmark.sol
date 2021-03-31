@@ -41,6 +41,7 @@ contract LandmarkFactory {
         string _name;
         string _latLng;
         string _landmarkAddress;
+        string _img;
         uint256 _tokenWorth;
     }
 
@@ -50,6 +51,7 @@ contract LandmarkFactory {
         string memory _name,
         string memory _latLng,
         string memory _landmarkAddress,
+        string memory _img,
         uint256 _tokenWorth
     ) public isManager {
         // this is a unique salt that takes the current
@@ -66,6 +68,7 @@ contract LandmarkFactory {
                     _name,
                     _latLng,
                     _landmarkAddress,
+                    _img,
                     _tokenWorth,
                     _salt
                 )
@@ -75,6 +78,7 @@ contract LandmarkFactory {
                 _name,
                 _latLng,
                 _landmarkAddress,
+                _img,
                 _tokenWorth,
                 _salt,
                 _uniqueHash,
@@ -82,7 +86,7 @@ contract LandmarkFactory {
             );
         _deployedLandmarks.push(landmark);
         _landmarks.push(
-            LandmarkInformation(_name, _latLng, _landmarkAddress, _tokenWorth)
+            LandmarkInformation(_name, _latLng, _landmarkAddress, _img, _tokenWorth)
         );
     }
 
@@ -130,6 +134,7 @@ contract Landmark is TerraCoin {
     string private _landmarkName;
     string private _latLng;
     string private _landmarkAddress;
+    string private _img;
 
     // the worth of each landmark in TerraCoins
     uint256 private _tokenWorth;
@@ -157,6 +162,7 @@ contract Landmark is TerraCoin {
         string memory landmarkName_,
         string memory latLng_,
         string memory landmarkAddress_,
+        string memory img_,
         uint256 tokenWorth_,
         uint256 salt_,
         bytes32 uniqueHash_,
@@ -165,6 +171,7 @@ contract Landmark is TerraCoin {
         _landmarkName = landmarkName_;
         _latLng = latLng_;
         _landmarkAddress = landmarkAddress_;
+        _img = img_;
         _tokenWorth = tokenWorth_;
         _salt = salt_;
         _uniqueHash = uniqueHash_;
@@ -184,6 +191,10 @@ contract Landmark is TerraCoin {
 
     function landmarkAddress() public view returns (string memory) {
         return _landmarkAddress;
+    }
+
+    function img() public view returns (string memory) {
+        return _img;
     }
 
     function tokenWorth() public view returns (uint256) {
@@ -208,6 +219,7 @@ contract Landmark is TerraCoin {
             string memory,
             string memory,
             string memory,
+            string memory,
             uint256,
             uint256,
             address
@@ -217,6 +229,7 @@ contract Landmark is TerraCoin {
             _landmarkName,
             _latLng,
             _landmarkAddress,
+            _img,
             _tokenWorth,
             _salt,
             address(this)
@@ -230,6 +243,7 @@ contract Landmark is TerraCoin {
         string memory landmarkName_,
         string memory latLng_,
         string memory landmarkAddress_,
+        string memory img_,
         uint256 tokenWorth_,
         uint256 salt_
     ) public {
@@ -239,6 +253,7 @@ contract Landmark is TerraCoin {
                     landmarkName_,
                     latLng_,
                     landmarkAddress_,
+                    img_,
                     tokenWorth_,
                     salt_
                 )
