@@ -3,7 +3,7 @@ import LandmarkFactory from './artifacts/contracts/Landmark.sol/LandmarkFactory.
 
 // we need the contract address and abi to export our contract
 // well. 
-const contractAddress = '0x38D151D6c2Ac83655228fd3D95fB9a242a98405D';
+const contractAddress = '0x91574A5a386a32f9Da2Af00082e5F0dE94feF9D9';
 const abi = LandmarkFactory.abi;
 
 const instance = new web3.eth.Contract(abi, contractAddress);

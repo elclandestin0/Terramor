@@ -1,9 +1,13 @@
 // react imports
 import React, { useState } from "react";
+import { QRCode } from "react-qr-svg";
+
+// terramor imports
 import Layout from "../../../components/Layout";
 
 // ethereum imports
-import landmarkFactory from "../../../ethereum/landmarkFactory";
+import LandmarkFactory from "../../../ethereum/landmarkFactory";
+import Landmark from "../../../ethereum/landmark";
 import web3 from "../../../ethereum/web3";
 
 // Material UI imports
@@ -30,13 +34,17 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: "20px",
   },
+  qrCode: {
+    marginTop: "30px",
+    marginBottom: "60px"
+  }
 }));
 
 const AddLandmark = () => {
   // styles
   const classes = useStyles();
 
-  // states
+  // states for landmark creation
   const [name, setName] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
@@ -44,19 +52,42 @@ const AddLandmark = () => {
   const [img, setImg] = useState("");
   const [token, setToken] = useState(0);
 
+  // state for summary returned
+  const [summary, setSummary] = useState("");
+
+  // here we add the landmark after setting the form values.
+  // afterwards, when it is successful, we call the returnSummary()
+  // function in order to construct our QR Code that we need to use.
   const addLandmark = async () => {
     console.log("attempting to add landmark");
     const accounts = await web3.eth.getAccounts();
     const latLng = `[${latitude}, ${longitude}]`;
     try {
-      const landmark = await landmarkFactory.methods
+      await LandmarkFactory.methods
         .createLandmark(name, latLng, address, img, token)
-        .send({ from: accounts[0] });
-      console.log("Landmark added!");
-      console.log(landmark.options.address);
+        .send({ from: accounts[0] })
+        .then((landmarkAddress) => {
+          const address = landmarkAddress.events[0].address;
+          const landmark = Landmark(address);
+          generateQRCode(landmark, accounts[0]);
+        });
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const generateQRCode = async (landmark, account) => {
+    await landmark.methods
+      .returnSummary()
+      .call({ from: account })
+      .then((q) => {
+        setSummary(JSON.stringify(q));
+        console.log("summary returned! " + qrCode);
+        console.log(q);
+      })
+      .catch((err) => {
+        return err;
+      });
   };
 
   return (
@@ -139,6 +170,16 @@ const AddLandmark = () => {
             >
               CREATE
             </Button>
+            {summary && (
+              <QRCode
+              className={classes.qrCode}
+                bgColor="#FFFFFF"
+                fgColor="#000000"
+                level="Q"
+                style={{ width: 256 }}
+                value={summary}
+              />
+            )}
           </CardContent>
         </Card>
       </Container>

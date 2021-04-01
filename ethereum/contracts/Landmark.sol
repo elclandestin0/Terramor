@@ -139,7 +139,7 @@ contract Landmark is TerraCoin {
     // the worth of each landmark in TerraCoins
     uint256 private _tokenWorth;
 
-    // the user index for usersDiscvoered
+    // the user index for usersDiscovered
     uint256 private _userIndex = 0;
 
     // the unique salt and hash for each Landmark

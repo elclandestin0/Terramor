@@ -10,7 +10,7 @@ const Layout = dynamic(() => import("../../components/Layout"), {
 // ethereum imports
 import web3 from "../../ethereum/web3";
 import terraCoin from "../../ethereum/terraCoin";
-import landmarkFactory from "../../ethereum/landmarkFactory";
+import LandmarkFactory from "../../ethereum/landmarkFactory";
 import { Link } from "../../routes";
 
 // next.js imports
@@ -42,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: "inline",
   },
-
+  button: {
+    textAlign: "center"
+  }
 }));
 
 const Home = ({ landmarks }) => {
@@ -78,7 +80,7 @@ const Home = ({ landmarks }) => {
     const tokenWorth = landmark[4];
     return (
       <div>
-        <ListItem key={img} alignItems="flex-start">
+        <ListItem key={index} alignItems="flex-start">
           <ListItemAvatar>
             <Avatar src={img} />
           </ListItemAvatar>
@@ -154,6 +156,6 @@ const Home = ({ landmarks }) => {
 export default Home;
 
 export async function getServerSideProps() {
-  const landmarks = await landmarkFactory.methods.landmarks().call();
+  const landmarks = await LandmarkFactory.methods.landmarks().call();
   return { props: { landmarks } };
 }

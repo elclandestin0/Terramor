@@ -1,7 +1,7 @@
 import React from "react";
 
 // our landmark Factory deployed on Rinkeby
-import landmarkFactory from "../ethereum/landmarkFactory";
+import LandmarkFactory from "../ethereum/landmarkFactory";
 // import Layout from "../components/Layout";
 
 // next.js imports
@@ -30,6 +30,6 @@ export default Page;
 
 // call landmarks from our contract first and inject it into our page
 export async function getServerSideProps() {
-  const landmarks = await landmarkFactory.methods.landmarks().call();
+  const landmarks = await LandmarkFactory.methods.landmarks().call();
   return { props: { landmarks } };
 }
