@@ -1,10 +1,15 @@
 // react imports
 import React, { useState } from "react";
 import { QRCode } from "react-qr-svg";
-// import QrReader from 'react-qr-reader'
+
+// next.js imports
+import dynamic from "next/dynamic";
 
 // terramor imports
-import Layout from "../../../components/Layout";
+const Layout = dynamic(() => import("../../../components/Layout"), {
+  loading: () => "Loading...",
+  ssr: false,
+});
 
 // ethereum imports
 import LandmarkFactory from "../../../ethereum/landmarkFactory";
@@ -37,8 +42,8 @@ const useStyles = makeStyles((theme) => ({
   },
   qrCode: {
     marginTop: "30px",
-    marginBottom: "60px"
-  }
+    marginBottom: "60px",
+  },
 }));
 
 const AddLandmark = () => {
@@ -173,7 +178,7 @@ const AddLandmark = () => {
             </Button>
             {summary && (
               <QRCode
-              className={classes.qrCode}
+                className={classes.qrCode}
                 bgColor="#FFFFFF"
                 fgColor="#000000"
                 level="Q"

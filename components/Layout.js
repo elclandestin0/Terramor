@@ -56,7 +56,9 @@ const Layout = (props) => {
             </IconButton>
           </Link>
           <Fab color="secondary" aria-label="add" className={classes.fabButton}>
-            <CameraAltIcon />
+            <Link route="/camera/">
+              <CameraAltIcon />
+            </Link>
           </Fab>
           <div className={classes.grow} />
           <Link route={"/home/"}>
