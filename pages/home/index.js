@@ -43,7 +43,8 @@ const useStyles = makeStyles((theme) => ({
     display: "inline",
   },
   button: {
-    textAlign: "center"
+    textAlign: "center",
+    marginBottom: "100px"
   }
 }));
 

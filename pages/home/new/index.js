@@ -1,6 +1,7 @@
 // react imports
 import React, { useState } from "react";
 import { QRCode } from "react-qr-svg";
+// import QrReader from 'react-qr-reader'
 
 // terramor imports
 import Layout from "../../../components/Layout";

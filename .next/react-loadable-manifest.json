@@ -1,34 +1,4 @@
 {
-  "../../components/Layout": [
-    {
-      "id": "./components/Layout.js",
-      "file": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
-      "file": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js",
-      "file": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/CameraAlt.js",
-      "file": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/Home.js",
-      "file": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/Map.js",
-      "file": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/utils/createSvgIcon.js",
-      "file": "static/chunks/1.js"
-    }
-  ],
   "./dev/noop": [
     {
       "id": "./node_modules/next/dist/client/dev/noop.js",
