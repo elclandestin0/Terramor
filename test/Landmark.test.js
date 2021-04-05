@@ -12,6 +12,7 @@ const path = require("path");
 const landmarkPath = path.resolve(
   __dirname,
   "..",
+  "ethereum",
   "artifacts",
   "contracts",
   "Landmark.sol",
@@ -21,6 +22,7 @@ const landmarkPath = path.resolve(
 const landmarkFactoryPath = path.resolve(
   __dirname,
   "..",
+  "ethereum",
   "artifacts",
   "contracts",
   "Landmark.sol",
@@ -30,6 +32,7 @@ const landmarkFactoryPath = path.resolve(
 const terraCoinPath = path.resolve(
   __dirname,
   "..",
+  "ethereum",
   "artifacts",
   "contracts",
   "Landmark.sol",
@@ -75,6 +78,7 @@ beforeEach(async () => {
       "Parc de la Fontaine",
       "[45.5271, -73.5695]",
       "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7",
+      "123490",
       1
     )
     .send({
@@ -101,7 +105,7 @@ beforeEach(async () => {
     });
 
   // increase allowance of the account manager so that we test sending coins
-  // around the tests
+  // around
   await terraCoin.methods.increaseAllowance(accounts[0], 10).send({
     from: accounts[0],
     gas: "5555555",
@@ -118,7 +122,6 @@ describe("Landmark test", () => {
   });
   it("returns the array of LandmarkInformation structs", async () => {
     const landmarks = await factory.methods.landmarks().call();
-    console.log(landmarks);
     assert.ok(landmarks);
   });
   it("landmark owner is landmark creator", async () => {
@@ -138,7 +141,9 @@ describe("Landmark test", () => {
     assert.equal(totalSupply, 1000);
   });
   it("check if owner's balance is 1000", async () => {
-    const balance = await terraCoin.methods.balanceOf(accounts[0]).call();
+    const balance = await terraCoin.methods
+      .balanceOf(terraCoin.options.address)
+      .call();
     assert.equal(balance, 1000);
   });
   it("check allowance of manager is 10", async () => {
@@ -158,9 +163,10 @@ describe("Landmark test", () => {
     assert.equal(allowance, 20);
   });
   it("can transfer 1 TC from owner to another account", async () => {
-    await terraCoin.methods
+    await landmark.methods
       .transfer(accounts[1], 1)
-      .send({ from: accounts[0], gas: "5555555" });
+      .send({ from: terraCoin.options.address, gas: "5555555" });
+
     // call and check account balance is = 1
     const accountBalance = await terraCoin.methods
       .balanceOf(accounts[1])
@@ -171,21 +177,25 @@ describe("Landmark test", () => {
     const summary = await landmark.methods
       .returnSummary()
       .call({ from: accounts[0] });
+    console.log("about to scan")
     await landmark.methods
       .scanLandmark(
         summary["0"],
         summary["1"],
         summary["2"],
-        parseInt(summary["3"]),
-        parseInt(summary["4"])
+        summary["3"],
+        parseInt(summary["4"]),
+        parseInt(summary["5"])
       )
-      .send({ from: accounts[1], gas: "5555555" })
+      .send({ from: accounts[1], gas: "6555555" })
       .then(async () => {
+        console.log("successfully scanned");
         // after the user scans the landmark, the manager can send the user
         // 1 token.
-        await terraCoin.methods
-          .transfer(accounts[1], 1)
-          .send({ from: accounts[0], gas: "5555555" });
+
+        // await terraCoin.methods
+        //   .transfer(accounts[1], 1)
+        //   .send({ from: accounts[0], gas: "5555555" });
 
         // call the balance of the user who scanned the landmark
         const accountBalance = await terraCoin.methods

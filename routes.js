@@ -2,8 +2,8 @@
 const routes = require("next-routes")();
 
 // route rules
-routes.add("/home/", "/home/index");
-routes.add("/home/new", "/home/new/index");
-routes.add("/camera/", "/camera/index");
+routes.add("/home/", "/home/home");
+routes.add("/home/new", "/home/new/new");
+routes.add("/camera/", "/camera/camera");
 
 module.exports = routes;

@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 
 // Material UI imports
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  Container,
-  Typography,
-} from "@material-ui/core";
+import { Card, CardContent, CardHeader, Container } from "@material-ui/core";
 
 // Ethereum imports
 import Landmark from "../../ethereum/landmark";
@@ -16,8 +10,8 @@ import terraCoin from "../../ethereum/terraCoin";
 
 // next.js imports
 import dynamic from "next/dynamic";
-// QR Reader import with SSR disabled
 
+// QR Reader import with SSR disabled
 const QrReader = dynamic(() => import("react-qr-reader"), {
   loading: () => "loading ...",
   ssr: false,
@@ -25,11 +19,11 @@ const QrReader = dynamic(() => import("react-qr-reader"), {
 
 const Camera = () => {
   const [result, setResult] = useState("");
+  let scanned = false;
 
   // if scan is handled well, we send the data to scanLandmark()
   const handleScan = async (data) => {
-    if (data) {
-      setResult(data);
+    if (data && !scanned) {
       const parsedData = JSON.parse(data);
       const name = parsedData[0];
       const latLng = parsedData[1];
@@ -39,6 +33,7 @@ const Camera = () => {
       const salt = parseInt(parsedData[5]);
       const address = parsedData[6];
       const landmark = Landmark(address);
+      scanned = true;
       setResult("verifying QR code ... please wait!");
       scanLandmark(
         landmark,
@@ -63,10 +58,8 @@ const Camera = () => {
     salt
   ) => {
     try {
+      console.log(terraCoin.options.address);
       const accounts = await web3.eth.getAccounts();
-      const manager = await landmark.methods.manager().call();
-      console.log(accounts[0]);
-      console.log(manager);
       await landmark.methods
         .scanLandmark(
           landmarkName,
@@ -78,16 +71,24 @@ const Camera = () => {
         )
         .send({ from: accounts[0], gas: "5555555" })
         .then(async () => {
-          console.log("about to transfer");
-          await landmark.methods
-            .transferFrom(manager, accounts[0], tokenWorth)
-            .send({ from: manager, gas: "5555555" });
+          setResult(
+            "About to transfer " +
+              tokenWorth +
+              " coin to account: " +
+              accounts[0]
+          );
+          await terraCoin.methods
+            .transfer(accounts[0], tokenWorth)
+            .send({ from: terraCoin.options.address, gas: "5555555" });
         })
         .then(() => {
           setResult("You earned " + tokenWorth + " TerraCoin!");
+          scanned = false;
         });
     } catch (err) {
+      scanned = false;
       console.log(err);
+      setResult("Failed");
     }
   };
 
