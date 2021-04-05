@@ -3,6 +3,9 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 const Web3 = require("web3");
 const path = require("path");
 
+// dotenv
+require('dotenv').config()
+
 // file stream
 const fs = require("fs");
 
@@ -22,7 +25,7 @@ const compiledLandmark = fs.readFileSync(landmarkFactoryPath, "utf8");
 // Set up a Truffle provider and include our mnemonic phrase
 // along with the rinkeby infura node ..
 const truffleProvider = new HDWalletProvider(
-  "crew express nothing company wet enforce rural pioneer surround evidence trigger file",
+  process.env.SEED,
   "https://rinkeby.infura.io/v3/877a59f4a10342a5aff775080ec9fc06"
 );
 

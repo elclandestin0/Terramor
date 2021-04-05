@@ -22,7 +22,6 @@ import {
   CardContent,
   CardHeader,
   Button,
-  Divider,
   Container,
   TextField,
 } from "@material-ui/core";
@@ -87,9 +86,9 @@ const AddLandmark = () => {
       .returnSummary()
       .call({ from: account })
       .then((q) => {
-        setSummary(JSON.stringify(q));
-        console.log("summary returned! " + qrCode);
         console.log(q);
+        console.log(JSON.stringify(q));
+        setSummary((JSON.stringify(q)));
       })
       .catch((err) => {
         return err;
