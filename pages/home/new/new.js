@@ -5,7 +5,7 @@ import { QRCode } from "react-qr-svg";
 // next.js imports
 import dynamic from "next/dynamic";
 
-// terramor imports
+// terramor imports without SSR rendering
 const Layout = dynamic(() => import("../../../components/Layout"), {
   loading: () => "Loading...",
   ssr: false,
@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AddLandmark = () => {
-  // styles
   const classes = useStyles();
 
   // states for landmark creation
@@ -81,14 +80,17 @@ const AddLandmark = () => {
     }
   };
 
+  // we generate the QR code right after our landmark is successfully
+  // added. This will help the creator print out the QR code and place
+  // it in the locations for the user to discover.
   const generateQRCode = async (landmark, account) => {
     await landmark.methods
       .returnSummary()
       .call({ from: account })
       .then((q) => {
+        setSummary(JSON.stringify(q));
+        console.log("summary returned! " + qrCode);
         console.log(q);
-        console.log(JSON.stringify(q));
-        setSummary((JSON.stringify(q)));
       })
       .catch((err) => {
         return err;
