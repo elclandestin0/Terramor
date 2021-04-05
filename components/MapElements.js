@@ -5,10 +5,9 @@ import { Marker, Popup } from "react-map-gl";
 
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardContent, CardMedia, CardHeader, Paper } from "@material-ui/core/";
-import Typography from "@material-ui/core/Typography";
+import { Card, CardMedia, CardHeader, Paper } from "@material-ui/core/";
 
-// styles for the card
+// styles for this component
 const useStyles = makeStyles({
   root: {
     maxWidth: 100,
@@ -32,7 +31,6 @@ const MapElement = ({
   lng,
   name,
   img,
-  landmarkAddress,
   tokenWorth,
   index,
 }) => {

@@ -33,6 +33,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
+// styles
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -70,6 +71,7 @@ const Home = ({ landmarks }) => {
     getBalance();
   }, []);
 
+  // MAY DELETE LATER
   const truncate = (str) => {
     return str.length > 10 ? str.substring(0, 10) + "..." : str;
   };
@@ -156,6 +158,8 @@ const Home = ({ landmarks }) => {
 
 export default Home;
 
+// get landmarks from ethereum on the  server side before the
+// client renders
 export async function getServerSideProps() {
   const landmarks = await LandmarkFactory.methods.landmarks().call();
   return { props: { landmarks } };
