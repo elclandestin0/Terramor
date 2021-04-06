@@ -10,10 +10,10 @@ const Layout = dynamic(() => import("../../components/Layout"), {
 import web3 from "../../ethereum/web3";
 import terraCoin from "../../ethereum/terraCoin";
 import LandmarkFactory from "../../ethereum/landmarkFactory";
-import { Link } from "../../routes";
 
 // next.js imports
 import dynamic from "next/dynamic";
+import { Link } from "../../routes";
 
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
@@ -44,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     textAlign: "center",
-    marginBottom: "100px"
-  }
+    marginBottom: "100px",
+  },
 }));
 
 const Home = ({ landmarks }) => {
@@ -115,42 +115,20 @@ const Home = ({ landmarks }) => {
       <Container>
         <Card>
           <CardHeader
-            title="Home"
-            subheader="Account information and Landmarks that can be discovered"
-          />
-        </Card>
-        <Card>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Account
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {account}
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Balance
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {balance} TerraCoins 💰
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader title="List of Landmarks" />
+            title="Landmarks"
+            subheader="List of Landmarks that can be discovered"
+          />{" "}
           <List className={classes.root}>{renderLandmarkList}</List>
-        </Card>
-        <Card>
           <CardContent className={classes.button}>
-            <Link route={"/home/new"}>
+            <Link route={"/landmarks/new"}>
               <Button variant="contained" color="primary">
                 Add Landmark
               </Button>
             </Link>
           </CardContent>
+        </Card>
+        <Card>
+          <CardHeader title="List of Landmarks" />
         </Card>
       </Container>
     </Layout>

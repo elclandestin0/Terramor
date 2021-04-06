@@ -111,65 +111,65 @@ beforeEach(async () => {
 
 // BEGIN TESTS
 describe("Landmark test", () => {
-  // it("deploys a factory", () => {
-  //   assert.ok(factory.options.address);
-  // });
-  // it("adds a landmark", () => {
-  //   assert.ok(landmark.options.address);
-  // });
-  // it("returns the array of LandmarkInformation structs", async () => {
-  //   const landmarks = await factory.methods.landmarks().call();
-  //   assert.ok(landmarks);
-  // });
-  // it("landmark owner is landmark creator", async () => {
-  //   const manager = await landmark.methods.manager().call();
-  //   assert.equal(manager, accounts[0]);
-  // });
-  // it("only owner can return summary of landamrk", async () => {
-  //   // check if we can get summary information from manager
-  //   const summary = await landmark.methods
-  //     .returnSummary()
-  //     .call({ from: accounts[0] });
-  //   assert(summary["0"]);
-  // });
-  // it("deploys terraCoin", async () => {
-  //   assert.ok(terraCoin.options.address);
-  //   const totalSupply = await terraCoin.methods.totalSupply().call();
-  //   assert.equal(totalSupply, 1000);
-  // });
-  // it("check if owner's balance is 1000", async () => {
-  //   const balance = await terraCoin.methods
-  //     .balanceOf(terraCoin.options.address)
-  //     .call();
-  //   assert.equal(balance, 1000);
-  // });
-  // it("check allowance of manager is 10", async () => {
-  //   const allowance = await terraCoin.methods
-  //     .allowance(accounts[0], accounts[0])
-  //     .call();
-  //   assert.equal(allowance, 10);
-  // });
-  // it("increase allowance of manager by 10", async () => {
-  //   await terraCoin.methods.increaseAllowance(accounts[0], 10).send({
-  //     from: accounts[0],
-  //     gas: "5555555",
-  //   });
-  //   const allowance = await terraCoin.methods
-  //     .allowance(accounts[0], accounts[0])
-  //     .call();
-  //   assert.equal(allowance, 20);
-  // });
-  // it("can transfer 1 TC from owner to another account", async () => {
-  //   await landmark.methods
-  //     .transfer(accounts[1], 1)
-  //     .send({ from: terraCoin.options.address, gas: "5555555" });
+  it("deploys a factory", () => {
+    assert.ok(factory.options.address);
+  });
+  it("adds a landmark", () => {
+    assert.ok(landmark.options.address);
+  });
+  it("returns the array of LandmarkInformation structs", async () => {
+    const landmarks = await factory.methods.landmarks().call();
+    assert.ok(landmarks);
+  });
+  it("landmark owner is landmark creator", async () => {
+    const manager = await landmark.methods.manager().call();
+    assert.equal(manager, accounts[0]);
+  });
+  it("only owner can return summary of landamrk", async () => {
+    // check if we can get summary information from manager
+    const summary = await landmark.methods
+      .returnSummary()
+      .call({ from: accounts[0] });
+    assert(summary["0"]);
+  });
+  it("deploys terraCoin", async () => {
+    assert.ok(terraCoin.options.address);
+    const totalSupply = await terraCoin.methods.totalSupply().call();
+    assert.equal(totalSupply, 1000);
+  });
+  it("check if owner's balance is 1000", async () => {
+    const balance = await terraCoin.methods
+      .balanceOf(terraCoin.options.address)
+      .call();
+    assert.equal(balance, 1000);
+  });
+  it("check allowance of manager is 10", async () => {
+    const allowance = await terraCoin.methods
+      .allowance(accounts[0], accounts[0])
+      .call();
+    assert.equal(allowance, 10);
+  });
+  it("increase allowance of manager by 10", async () => {
+    await terraCoin.methods.increaseAllowance(accounts[0], 10).send({
+      from: accounts[0],
+      gas: "5555555",
+    });
+    const allowance = await terraCoin.methods
+      .allowance(accounts[0], accounts[0])
+      .call();
+    assert.equal(allowance, 20);
+  });
+  it("can transfer 1 TC from owner to another account", async () => {
+    await landmark.methods
+      .transfer(accounts[1], 1)
+      .send({ from: terraCoin.options.address, gas: "5555555" });
 
-  //   // call and check account balance is = 1
-  //   const accountBalance = await terraCoin.methods
-  //     .balanceOf(accounts[1])
-  //     .call();
-  //   assert.equal(accountBalance, 1);
-  // });
+    // call and check account balance is = 1
+    const accountBalance = await terraCoin.methods
+      .balanceOf(accounts[1])
+      .call();
+    assert.equal(accountBalance, 1);
+  });
   it("can scan a landmark", async () => {
     const summary = await landmark.methods
       .returnSummary()

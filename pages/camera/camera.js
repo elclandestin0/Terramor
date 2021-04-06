@@ -7,6 +7,12 @@ import { Card, CardContent, CardHeader, Container } from "@material-ui/core";
 import Landmark from "../../ethereum/landmark";
 import web3 from "../../ethereum/web3";
 
+// terramor imports without SSR rendering
+const Layout = dynamic(() => import("../../components/Layout"), {
+  loading: () => "Loading...",
+  ssr: false,
+});
+
 // next.js imports
 import dynamic from "next/dynamic";
 
@@ -25,7 +31,7 @@ const Camera = () => {
   // if scan is handled well, we send the data to scanLandmark()
   const handleScan = async (data) => {
     if (data && !scanned) {
-      // we parse the data from the QR code and assign them into 
+      // we parse the data from the QR code and assign them into
       // variables
       const parsedData = JSON.parse(data);
       const name = parsedData[0];
@@ -37,14 +43,7 @@ const Camera = () => {
       const landmark = Landmark(address);
       scanned = true;
       setResult("verifying QR code ... please wait!");
-      scanLandmark(
-        landmark,
-        name,
-        latLng,
-        landmarkAddress,
-        tokenWorth,
-        salt
-      );
+      scanLandmark(landmark, name, latLng, landmarkAddress, tokenWorth, salt);
     }
   };
 
@@ -63,13 +62,7 @@ const Camera = () => {
 
       // .. then scan the landmark using that account
       await landmark.methods
-        .scanLandmark(
-          landmarkName,
-          latLng,
-          landmarkAddress,
-          tokenWorth,
-          salt
-        )
+        .scanLandmark(landmarkName, latLng, landmarkAddress, tokenWorth, salt)
         .send({ from: accounts[0], gas: "5555555" })
         .then(() => {
           // if it's successful, the landmark transfers coins
@@ -90,23 +83,25 @@ const Camera = () => {
   };
 
   return (
-    <div>
-      <QrReader
-        delay={300}
-        onError={handleError}
-        onScan={handleScan}
-        style={{ width: "100%" }}
-      />
-      <Container>
-        <Card>
-          <CardHeader
-            title="Scan Landmark's QR Code"
-            subheader="Scan the QR Code of a Landmark"
-          />
-          <CardContent>{result}</CardContent>
-        </Card>
-      </Container>
-    </div>
+    <Layout>
+      <div>
+        <QrReader
+          delay={300}
+          onError={handleError}
+          onScan={handleScan}
+          style={{ width: "100%" }}
+        />
+        <Container>
+          <Card>
+            <CardHeader
+              title="Scan Landmark's QR Code"
+              subheader="Scan the QR Code of a Landmark"
+            />
+            <CardContent>{result}</CardContent>
+          </Card>
+        </Container>
+      </div>
+    </Layout>
   );
 };
 

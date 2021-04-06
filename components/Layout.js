@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // next.js imports
 import { Link } from "../routes";
 
+// ethereum imports
+import web3 from "../ethereum/web3";
+import terraCoin from "../ethereum/terraCoin";
+
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, IconButton, Fab } from "@material-ui/core/";
-import MapIcon  from "@material-ui/icons/Map";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Fab,
+  Typography,
+} from "@material-ui/core/";
+import MapIcon from "@material-ui/icons/Map";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
-import HomeIcon from "@material-ui/icons/Home";
+import RoomIcon from "@material-ui/icons/Room";
 
 // styles for this page
 const useStyles = makeStyles((theme) => ({
+  title: {
+    flexGrow: 1,
+  },
   text: {
     padding: theme.spacing(2, 2, 0),
   },
@@ -42,9 +55,42 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Layout = (props) => {
+  // states for our account and balance
+  const [account, setAccount] = useState("0x000000000000");
+  const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    // get accounts
+    const getAccount = async () => {
+      const accounts = await web3.eth.getAccounts();
+      setAccount(accounts[0]);
+    };
+    // get balance
+    const getBalance = async () => {
+      const accounts = await web3.eth.getAccounts();
+      const balance = await terraCoin.methods.balanceOf(accounts[0]).call();
+      console.log(balance);
+      setBalance(balance);
+    };
+    getAccount();
+    getBalance();
+  }, []);
+
+  const truncate = (str) => {
+    return str.length > 10 ? str.substring(0, 10) + "..." : str;
+  };
+
   const classes = useStyles();
   return (
     <div>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="body1" className={classes.title}>
+            {truncate(account)}
+          </Typography>
+          <Typography variant="body1">{balance} TC 💵 </Typography>
+        </Toolbar>
+      </AppBar>
       {props.children}
       <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
@@ -59,9 +105,9 @@ const Layout = (props) => {
             </Link>
           </Fab>
           <div className={classes.grow} />
-          <Link route={"/home/"}>
+          <Link route={"/landmarks/"}>
             <IconButton edge="end" color="inherit">
-              <HomeIcon />
+              <RoomIcon />
             </IconButton>
           </Link>
         </Toolbar>
