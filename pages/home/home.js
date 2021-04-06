@@ -65,6 +65,7 @@ const Home = ({ landmarks }) => {
     const getBalance = async () => {
       const accounts = await web3.eth.getAccounts();
       const balance = await terraCoin.methods.balanceOf(accounts[0]).call();
+      console.log(balance);
       setBalance(balance);
     };
     getAccount();

@@ -12,7 +12,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
  */
 contract TerraCoin is ERC20 {
     constructor() ERC20("TerraCoin", "TC") {
-        _mint(address(this), 1000);
+        _mint(msg.sender, 1000);
     }
 }
 
@@ -86,7 +86,13 @@ contract LandmarkFactory {
             );
         _deployedLandmarks.push(landmark);
         _landmarks.push(
-            LandmarkInformation(_name, _latLng, _landmarkAddress, _img, _tokenWorth)
+            LandmarkInformation(
+                _name,
+                _latLng,
+                _landmarkAddress,
+                _img,
+                _tokenWorth
+            )
         );
     }
 
@@ -131,7 +137,6 @@ contract LandmarkFactory {
     verified and the user is transferred the respective amount of TerraCoins.
  */
 contract Landmark is TerraCoin {
-    TerraCoin tc;
     string private _landmarkName;
     string private _latLng;
     string private _landmarkAddress;
@@ -260,8 +265,8 @@ contract Landmark is TerraCoin {
                 )
             );
         require(uniqueHash == _uniqueHash);
+        ERC20(0xe790C45A3B269fD7aD82e6BE81D08D3aE514ffB6).transfer(msg.sender, tokenWorth_);
         _usersDiscovered[_userIndex++] = msg.sender;
-        tc.transfer(msg.sender, tokenWorth_);
         emit LandmarkScanned(msg.sender, landmarkName_, latLng_, tokenWorth_);
     }
 

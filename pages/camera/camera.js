@@ -58,7 +58,6 @@ const Camera = () => {
     salt
   ) => {
     try {
-      console.log(terraCoin.options.address);
       const accounts = await web3.eth.getAccounts();
       await landmark.methods
         .scanLandmark(
@@ -77,9 +76,6 @@ const Camera = () => {
               " coin to account: " +
               accounts[0]
           );
-          await terraCoin.methods
-            .transfer(accounts[0], tokenWorth)
-            .send({ from: terraCoin.options.address, gas: "5555555" });
         })
         .then(() => {
           setResult("You earned " + tokenWorth + " TerraCoin!");

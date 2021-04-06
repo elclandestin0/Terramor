@@ -13,6 +13,7 @@ const Layout = dynamic(() => import("../../../components/Layout"), {
 
 // ethereum imports
 import LandmarkFactory from "../../../ethereum/landmarkFactory";
+import terraCoin from "../../../ethereum/terraCoin";
 import Landmark from "../../../ethereum/landmark";
 import web3 from "../../../ethereum/web3";
 
@@ -46,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AddLandmark = () => {
+  console.log(terraCoin.options.address);
   const classes = useStyles();
 
   // states for landmark creation
@@ -70,10 +72,15 @@ const AddLandmark = () => {
       await LandmarkFactory.methods
         .createLandmark(name, latLng, address, img, token)
         .send({ from: accounts[0] })
-        .then((landmarkAddress) => {
+        .then(async (landmarkAddress) => {
           const address = landmarkAddress.events[0].address;
           const landmark = Landmark(address);
-          generateQRCode(landmark, accounts[0]);
+          await terraCoin.methods
+            .transfer(landmark.options.address, token)
+            .send({ from: accounts[0] })
+            .then(() => {
+              generateQRCode(landmark, accounts[0]);
+            });
         });
     } catch (err) {
       console.log(err);
@@ -89,8 +96,11 @@ const AddLandmark = () => {
       .call({ from: account })
       .then((q) => {
         setSummary(JSON.stringify(q));
-        console.log("summary returned! " + qrCode);
-        console.log(q);
+      })
+      .then(async () => {
+        console.log("?");
+
+        console.log("?!");
       })
       .catch((err) => {
         return err;
