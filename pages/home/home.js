@@ -1,13 +1,12 @@
-// react imports
 import React, { useEffect, useState } from "react";
 
-// terramor imports
+// Terramor imports
 const Layout = dynamic(() => import("../../components/Layout"), {
   loading: () => "Loading...",
   ssr: false,
 });
 
-// ethereum imports
+// Ethereum imports
 import web3 from "../../ethereum/web3";
 import terraCoin from "../../ethereum/terraCoin";
 import LandmarkFactory from "../../ethereum/landmarkFactory";
@@ -16,7 +15,7 @@ import { Link } from "../../routes";
 // next.js imports
 import dynamic from "next/dynamic";
 
-// material ui imports
+// Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
@@ -77,6 +76,7 @@ const Home = ({ landmarks }) => {
     return str.length > 10 ? str.substring(0, 10) + "..." : str;
   };
 
+  // all the Landmarks that can be discovered are mapped here
   const renderLandmarkList = landmarks.map((landmark, index) => {
     const name = landmark[0];
     const landmarkAddress = landmark[2];
@@ -116,7 +116,7 @@ const Home = ({ landmarks }) => {
         <Card>
           <CardHeader
             title="Home"
-            subheader="Account information and landmarks discovered"
+            subheader="Account information and Landmarks that can be discovered"
           />
         </Card>
         <Card>

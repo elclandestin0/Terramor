@@ -179,7 +179,6 @@ describe("Landmark test", () => {
         summary["0"],
         summary["1"],
         summary["2"],
-        summary["3"],
         parseInt(summary["4"]),
         parseInt(summary["5"])
       )

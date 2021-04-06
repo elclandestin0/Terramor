@@ -75,12 +75,15 @@ const AddLandmark = () => {
         .then(async (landmarkAddress) => {
           const address = landmarkAddress.events[0].address;
           const landmark = Landmark(address);
+          // after we create a landmark, we tell TerraCoin 
+          // to send (token * 10) coins to the landmark so that
+          // more than one user can discover it.  
           await terraCoin.methods
-            .transfer(landmark.options.address, token)
-            .send({ from: accounts[0] })
-            .then(() => {
-              generateQRCode(landmark, accounts[0]);
-            });
+            .transfer(landmark.options.address, token * 10)
+            .send({ from: accounts[0] });
+        })
+        .then(() => {
+          generateQRCode(landmark, accounts[0]);
         });
     } catch (err) {
       console.log(err);
@@ -88,19 +91,15 @@ const AddLandmark = () => {
   };
 
   // we generate the QR code right after our landmark is successfully
-  // added. This will help the creator print out the QR code and place
-  // it in the locations for the user to discover.
+  // added and our coins are transfered.  This will help the creator 
+  // print out the QR code and place  it in the locations for the user 
+  // to discover.
   const generateQRCode = async (landmark, account) => {
     await landmark.methods
       .returnSummary()
       .call({ from: account })
       .then((q) => {
         setSummary(JSON.stringify(q));
-      })
-      .then(async () => {
-        console.log("?");
-
-        console.log("?!");
       })
       .catch((err) => {
         return err;

@@ -225,7 +225,6 @@ contract Landmark is TerraCoin {
             string memory,
             string memory,
             string memory,
-            string memory,
             uint256,
             uint256,
             address
@@ -235,7 +234,6 @@ contract Landmark is TerraCoin {
             _landmarkName,
             _latLng,
             _landmarkAddress,
-            _img,
             _tokenWorth,
             _salt,
             address(this)
@@ -249,7 +247,6 @@ contract Landmark is TerraCoin {
         string memory landmarkName_,
         string memory latLng_,
         string memory landmarkAddress_,
-        string memory img_,
         uint256 tokenWorth_,
         uint256 salt_
     ) public {
@@ -259,11 +256,11 @@ contract Landmark is TerraCoin {
                     landmarkName_,
                     latLng_,
                     landmarkAddress_,
-                    img_,
                     tokenWorth_,
                     salt_
                 )
             );
+        require(_usersDiscovered[_userIndex] != msg.sender, "You already discovered this Landmark!");
         require(uniqueHash == _uniqueHash);
         ERC20(0xe790C45A3B269fD7aD82e6BE81D08D3aE514ffB6).transfer(msg.sender, tokenWorth_);
         _usersDiscovered[_userIndex++] = msg.sender;

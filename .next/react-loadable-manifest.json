@@ -1,34 +1,4 @@
 {
-  "../../components/Layout": [
-    {
-      "id": "./components/Layout.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/CameraAlt.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/Home.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/Map.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/utils/createSvgIcon.js",
-      "file": "static/chunks/3.js"
-    }
-  ],
   "../components/Layout": [
     {
       "id": "./components/Layout.js",
@@ -4369,6 +4339,96 @@
     {
       "id": "./node_modules/next/dist/client/dev/noop.js",
       "file": "static/chunks/0.js"
+    }
+  ],
+  "react-qr-reader": [
+    {
+      "id": "./node_modules/react-qr-reader/lib/createBlob.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/react-qr-reader/lib/errors.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/react-qr-reader/lib/getDeviceId.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/react-qr-reader/lib/havePropsChanged.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/react-qr-reader/lib/index.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/rtcpeerconnection-shim/rtcpeerconnection.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/sdp/sdp.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/adapter_core.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/adapter_factory.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/chrome/chrome_shim.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/chrome/getdisplaymedia.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/chrome/getusermedia.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/common_shim.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/edge/edge_shim.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/edge/filtericeservers.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/edge/getdisplaymedia.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/edge/getusermedia.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/firefox/firefox_shim.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/firefox/getdisplaymedia.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/firefox/getusermedia.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/safari/safari_shim.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/webrtc-adapter/src/js/utils.js",
+      "file": "static/chunks/5.js"
     }
   ]
 }
