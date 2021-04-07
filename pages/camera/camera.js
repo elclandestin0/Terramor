@@ -89,7 +89,7 @@ const Camera = () => {
         .then(() => {
           // if it's successful, the landmark transfers coins
           // to the user.
-          setSuccess("You earned " + tokenWorth + " TerraCoin!");
+          setSuccess("You have earned " + tokenWorth + " TerraCoin by successfully scanning the Landmark!");
           setError("");
           scanned = false;
         });

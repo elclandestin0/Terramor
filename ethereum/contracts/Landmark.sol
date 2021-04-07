@@ -151,9 +151,10 @@ contract Landmark is TerraCoin {
     uint256 private _salt;
     bytes32 private _uniqueHash;
 
-    // how many users discovered this landmark
-    mapping(uint256 => address) private _usersDiscovered;
     address private _manager;
+
+    // userDiscovered mapping to boolean
+    mapping(address => bool) private _userDiscovered;
 
     // emit when a landmark is scanned
     event LandmarkScanned(
@@ -206,12 +207,12 @@ contract Landmark is TerraCoin {
         return _tokenWorth;
     }
 
-    function usersDiscovered(uint256 userIndex_) public view returns (address) {
-        return _usersDiscovered[userIndex_];
-    }
-
     function manager() public view returns (address) {
         return _manager;
+    }
+
+    function userDiscovered(address userAddress) public view returns (bool) {
+        return _userDiscovered[userAddress];
     }
 
     // this function is only used by the creator of this contract (the factory controller) and
@@ -259,10 +260,14 @@ contract Landmark is TerraCoin {
                     salt_
                 )
             );
+        require(
+            _userDiscovered[msg.sender] == false,
+            "You already discovered this!"
+        );
         require(uniqueHash == _uniqueHash, "Not a unique hash!");
         TerraCoin tc = TerraCoin(0xd71a2a5e29b39C55337085031f56A7640D6F1767);
         tc.transfer(msg.sender, tokenWorth_);
-        _usersDiscovered[_userIndex++] = msg.sender;
+        _userDiscovered[msg.sender] = true;
         emit LandmarkScanned(msg.sender, landmarkName_, latLng_, tokenWorth_);
     }
 

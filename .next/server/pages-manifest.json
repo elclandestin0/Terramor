@@ -2,6 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/landmarks/new/new": "pages/landmarks/new/new.js",
+  "/camera/camera": "pages/camera/camera.js",
+  "/landmarks/landmarks": "pages/landmarks/landmarks.js",
   "/": "pages/index.js"
 }

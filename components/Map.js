@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // MapBox for react made by a team of developers from uber
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { GeolocateControl } from "react-map-gl";
 
 // Terramor imports
 import MapElement from "./MapElements";
@@ -44,6 +44,12 @@ export default function Map({ landmarks }) {
       mapboxApiAccessToken="pk.eyJ1IjoiZWxjbGFuZGVzdGlubyIsImEiOiJja21xZXNmNmkwNzlpMm9waHltcDF2d2FyIn0.AT0kMKikvuNopwV-TqXxqQ"
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
+      <GeolocateControl
+        style={{right: 10, top: 10}}
+        positionOptions={{ enableHighAccuracy: true }}
+        trackUserLocation={true}
+        auto
+      />
       {renderMapElements}
     </ReactMapGL>
   );

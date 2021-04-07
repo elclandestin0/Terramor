@@ -168,43 +168,58 @@ describe("Landmark test", () => {
   //     .call();
   //   assert.equal(accountBalance, 1);
   // });
-  // it("can scan a landmark", async () => {
-  //   const summary = await landmark.methods
-  //     .returnSummary()
-  //     .call({ from: accounts[0] });
-  //   const accountBalance = await terraCoin.methods
-  //     .balanceOf(terraCoin.options.address)
-  //     .call();
-  //   console.log(accountBalance);
-  //   await landmark.methods
-  //     .scanLandmark(
-  //       summary["0"],
-  //       summary["1"],
-  //       summary["2"],
-  //       parseInt(summary["3"]),
-  //       parseInt(summary["4"]),
-  //       terraCoin.options.address
-  //     )
-  //     .send({ from: accounts[1], gas: "5555555" })
-  //     .then(async () => {
-  //       // call the balance of the user who scanned the landmark
-  //       const accountBalance = await terraCoin.methods
-  //         .balanceOf(accounts[1])
-  //         .call();
-  //       console.log(accountBalance);
+  it("can scan a landmark", async () => {
+    const summary = await landmark.methods
+      .returnSummary()
+      .call({ from: accounts[0] });
+    const accountBalance = await terraCoin.methods
+      .balanceOf(terraCoin.options.address)
+      .call();
+    await landmark.methods
+      .scanLandmark(
+        summary["0"],
+        summary["1"],
+        summary["2"],
+        parseInt(summary["3"]),
+        parseInt(summary["4"]),
+        terraCoin.options.address
+      )
+      .send({ from: accounts[1], gas: "5555555" })
+      .then(async () => {
+        // call the balance of the user who scanned the landmark
+        const accountBalance = await terraCoin.methods
+          .balanceOf(accounts[1])
+          .call();
 
-  //       const ownerBalance = await terraCoin.methods
-  //         .balanceOf(accounts[0])
-  //         .call();
-  //       console.log(ownerBalance);
+        const ownerBalance = await terraCoin.methods
+          .balanceOf(accounts[0])
+          .call();
 
-  //       // check if the user now has 1 extra coin in his account
-  //       assert.equal(accountBalance, 1);
+        // check if the user now has 1 extra coin in his account
+        assert.equal(accountBalance, 1);
 
-  //       // check the address of who discovered this landmark is equal to the
-  //       // account calling the method
-  //       const address = await landmark.methods.usersDiscovered(0).call();
-  //       assert.equal(address, accounts[1]);
-  //     });
-  // });
+        // check the address of who discovered this landmark is equal to the
+        // account calling the method
+        const bool = await landmark.methods.userDiscovered(accounts[1]).call();
+        assert.equal(bool, true);
+
+        // can we scan again? error should be caught and asserted 
+        // as true to pass the test.
+        try {
+          await landmark.methods
+            .scanLandmark(
+              summary["0"],
+              summary["1"],
+              summary["2"],
+              parseInt(summary["3"]),
+              parseInt(summary["4"]),
+              terraCoin.options.address
+            )
+            .send({ from: accounts[1], gas: "5555555" });
+          assert(false);
+        } catch (err) {
+          assert(true);
+        }
+      });
+  });
 });

@@ -4,7 +4,7 @@ const Web3 = require("web3");
 const path = require("path");
 
 // dotenv
-require('dotenv').config()
+
 
 // file stream
 const fs = require("fs");
