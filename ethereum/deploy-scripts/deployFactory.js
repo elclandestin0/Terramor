@@ -39,7 +39,7 @@ const deploy = async () => {
   // we only need to deploy Landmark Factory. since Landmark
   // already inherits  from TerraCoin, anytime we create a
   // Landmark from the Landmark Factory, we also create it's
-  //  own TC implementation.
+  // own TC implementation.
   const LandmarkFactory = await new web3.eth.Contract(JSON.parse(compiledLandmark).abi)
     .deploy({ data: JSON.parse(compiledLandmark).bytecode })
     .send({ from: accounts[0], gas: "5000000" })

@@ -51,30 +51,6 @@ const useStyles = makeStyles((theme) => ({
 const Home = ({ landmarks }) => {
   const classes = useStyles();
 
-  const [account, setAccount] = useState("");
-  const [balance, setBalance] = useState(0);
-
-  useEffect(() => {
-    // get accounts
-    const getAccount = async () => {
-      const accounts = await web3.eth.getAccounts();
-      setAccount(accounts[0]);
-    };
-    // get balance
-    const getBalance = async () => {
-      const accounts = await web3.eth.getAccounts();
-      const balance = await terraCoin.methods.balanceOf(accounts[0]).call();
-      console.log(balance);
-      setBalance(balance);
-    };
-    getAccount();
-    getBalance();
-  }, []);
-
-  // MAY DELETE LATER
-  const truncate = (str) => {
-    return str.length > 10 ? str.substring(0, 10) + "..." : str;
-  };
 
   // all the Landmarks that can be discovered are mapped here
   const renderLandmarkList = landmarks.map((landmark, index) => {
@@ -117,7 +93,7 @@ const Home = ({ landmarks }) => {
           <CardHeader
             title="Landmarks"
             subheader="List of Landmarks that can be discovered"
-          />{" "}
+          />
           <List className={classes.root}>{renderLandmarkList}</List>
           <CardContent className={classes.button}>
             <Link route={"/landmarks/new"}>
@@ -126,9 +102,6 @@ const Home = ({ landmarks }) => {
               </Button>
             </Link>
           </CardContent>
-        </Card>
-        <Card>
-          <CardHeader title="List of Landmarks" />
         </Card>
       </Container>
     </Layout>

@@ -68,7 +68,6 @@ contract LandmarkFactory {
                     _name,
                     _latLng,
                     _landmarkAddress,
-                    _img,
                     _tokenWorth,
                     _salt
                 )
@@ -260,9 +259,9 @@ contract Landmark is TerraCoin {
                     salt_
                 )
             );
-        require(_usersDiscovered[_userIndex] != msg.sender, "You already discovered this Landmark!");
-        require(uniqueHash == _uniqueHash);
-        ERC20(0xe790C45A3B269fD7aD82e6BE81D08D3aE514ffB6).transfer(msg.sender, tokenWorth_);
+        require(uniqueHash == _uniqueHash, "Not a unique hash!");
+        TerraCoin tc = TerraCoin(0xd71a2a5e29b39C55337085031f56A7640D6F1767);
+        tc.transfer(msg.sender, tokenWorth_);
         _usersDiscovered[_userIndex++] = msg.sender;
         emit LandmarkScanned(msg.sender, landmarkName_, latLng_, tokenWorth_);
     }

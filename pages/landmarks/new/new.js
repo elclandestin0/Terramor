@@ -25,7 +25,9 @@ import {
   Button,
   Container,
   TextField,
+  CircularProgress,
 } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
 
 // styles
@@ -44,11 +46,16 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "30px",
     marginBottom: "60px",
   },
+  formStatus: {
+    marginTop: "10px",
+  },
 }));
 
 const AddLandmark = () => {
-  console.log(terraCoin.options.address);
   const classes = useStyles();
+
+  // this will be assigned to the created landmark
+  let landmarkToAdd;
 
   // states for landmark creation
   const [name, setName] = useState("");
@@ -58,41 +65,64 @@ const AddLandmark = () => {
   const [img, setImg] = useState("");
   const [token, setToken] = useState(0);
 
-  // state for summary returned
+  // states for summary, loading, error and message
   const [summary, setSummary] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const truncate = (str) => {
+    return str.length > 10 ? str.substring(0, 10) + "..." : str;
+  };
 
   // here we add the landmark after setting the form values.
   // afterwards, when it is successful, we call the returnSummary()
   // function in order to construct our QR Code that we need to use.
   const addLandmark = async () => {
-    console.log("attempting to add landmark");
     const accounts = await web3.eth.getAccounts();
     const latLng = `[${latitude}, ${longitude}]`;
+    console.log("adding landmark");
+    setLoading(true);
+    setSuccess("");
+    setError("");
     try {
       await LandmarkFactory.methods
         .createLandmark(name, latLng, address, img, token)
         .send({ from: accounts[0] })
-        .then(async (landmarkAddress) => {
-          const address = landmarkAddress.events[0].address;
+        .then(async (data) => {
+          // the address that gets returned is made into a new Landmark and
+          // assigned to landmarkToAdd so that we can generate the QR code
+          const address = data.events[0].address;
           const landmark = Landmark(address);
-          // after we create a landmark, we tell TerraCoin 
-          // to send (token * 10) coins to the landmark so that
-          // more than one user can discover it.  
+          console.log("transferign 10 coins");
+          landmarkToAdd = landmark;
+          console.log("");
+          setSuccess(
+            "Landmark " +
+              truncate(address) +
+              " added! Now transfering 10 TerraCoins to this Landmark..."
+          );
+          setError("");
+          // sending 10 coins to this landmark ...
           await terraCoin.methods
             .transfer(landmark.options.address, token * 10)
             .send({ from: accounts[0] });
         })
         .then(() => {
-          generateQRCode(landmark, accounts[0]);
+          console.log("about to generate qr code");
+          generateQRCode(landmarkToAdd, accounts[0]);
         });
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
+      setError(err.message);
+      setLoading(false);
+      setSuccess("");
     }
   };
 
   // we generate the QR code right after our landmark is successfully
-  // added and our coins are transfered.  This will help the creator 
-  // print out the QR code and place  it in the locations for the user 
+  // added and our coins are transfered.  This will help the creator
+  // print out the QR code and place  it in the locations for the user
   // to discover.
   const generateQRCode = async (landmark, account) => {
     await landmark.methods
@@ -100,10 +130,15 @@ const AddLandmark = () => {
       .call({ from: account })
       .then((q) => {
         setSummary(JSON.stringify(q));
+        setSuccess("QR Code generated!");
+        setError("");
       })
       .catch((err) => {
+        setError(err.message);
+        setSuccess("");
         return err;
       });
+    setLoading(false);
   };
 
   return (
@@ -178,14 +213,33 @@ const AddLandmark = () => {
               label="Token Worth"
               variant="outlined"
             />
-            <Button
-              className={classes.button}
-              variant="contained"
-              color="primary"
-              onClick={addLandmark}
-            >
-              CREATE
-            </Button>
+            {!loading && (
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+                onClick={addLandmark}
+              >
+                CREATE
+              </Button>
+            )}
+            {loading && (
+              <div>
+                <CircularProgress className={classes.formStatus} />
+              </div>
+            )}
+            {error && (
+              <Alert severity="error" className={classes.formStatus}>
+                {" "}
+                {error}{" "}
+              </Alert>
+            )}
+            {success && (
+              <Alert severity="success" className={classes.formStatus}>
+                {" "}
+                {success}{" "}
+              </Alert>
+            )}
             {summary && (
               <QRCode
                 className={classes.qrCode}
