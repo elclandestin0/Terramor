@@ -203,7 +203,7 @@ describe("Landmark test", () => {
         const bool = await landmark.methods.userDiscovered(accounts[1]).call();
         assert.equal(bool, true);
 
-        // can we scan again? error should be caught and asserted 
+        // can we scan again? error should be caught and asserted
         // as true to pass the test.
         try {
           await landmark.methods

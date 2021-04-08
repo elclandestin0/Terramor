@@ -191,38 +191,6 @@
     {
       "id": "./routes.js",
       "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./components/Layout.js",
-      "file": "static/chunks/4.js"
-    },
-    {
-      "id": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
-      "file": "static/chunks/4.js"
-    },
-    {
-      "id": "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js",
-      "file": "static/chunks/4.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/CameraAlt.js",
-      "file": "static/chunks/4.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/Map.js",
-      "file": "static/chunks/4.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/Room.js",
-      "file": "static/chunks/4.js"
-    },
-    {
-      "id": "./node_modules/@material-ui/icons/utils/createSvgIcon.js",
-      "file": "static/chunks/4.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js",
-      "file": "static/chunks/4.js"
     }
   ],
   "../components/Layout": [

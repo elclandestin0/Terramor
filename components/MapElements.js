@@ -32,7 +32,6 @@ const MapElement = ({
   name,
   img,
   tokenWorth,
-  index,
 }) => {
   // show and close popup
   const [showPopup, setShowPopup] = useState(false);
@@ -41,7 +40,6 @@ const MapElement = ({
   return (
     <div>
       <Marker
-        key={index}
         latitude={lat}
         longitude={lng}
         offsetLeft={-20}
@@ -63,7 +61,6 @@ const MapElement = ({
         <Paper>
         <Card className={classes.root}>
           <Popup
-            key={index + 1}
             latitude={lat}
             longitude={lng}
             closeButton={true}

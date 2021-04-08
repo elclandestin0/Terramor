@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   qrCode: {
     marginTop: "30px",
-    marginBottom: "60px",
+    marginBottom: "80px",
   },
   formStatus: {
     marginTop: "10px",
@@ -81,8 +81,8 @@ const AddLandmark = () => {
   const addLandmark = async () => {
     const accounts = await web3.eth.getAccounts();
     const latLng = `[${latitude}, ${longitude}]`;
-    console.log("adding landmark");
     setLoading(true);
+    setSummary("");
     setSuccess("");
     setError("");
     try {
@@ -246,7 +246,7 @@ const AddLandmark = () => {
                 bgColor="#FFFFFF"
                 fgColor="#000000"
                 level="Q"
-                style={{ width: 256 }}
+                style={{ width: 512 }}
                 value={summary}
               />
             )}

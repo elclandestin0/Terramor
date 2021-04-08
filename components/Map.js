@@ -32,7 +32,7 @@ export default function Map({ landmarks }) {
         landmarkAddress={landmarkAddress}
         tokenWorth={tokenWorth}
         img={img}
-        index={index}
+        key={index}
       ></MapElement>
     );
   });

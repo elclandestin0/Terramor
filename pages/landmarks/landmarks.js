@@ -48,9 +48,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home = ({ landmarks }) => {
+const Landmarks = ({ landmarks }) => {
   const classes = useStyles();
-
 
   // all the Landmarks that can be discovered are mapped here
   const renderLandmarkList = landmarks.map((landmark, index) => {
@@ -59,8 +58,8 @@ const Home = ({ landmarks }) => {
     const img = landmark[3];
     const tokenWorth = landmark[4];
     return (
-      <div>
-        <ListItem key={index} alignItems="flex-start">
+      <div key={index}>
+        <ListItem alignItems="flex-start">
           <ListItemAvatar>
             <Avatar src={img} />
           </ListItemAvatar>
@@ -108,7 +107,7 @@ const Home = ({ landmarks }) => {
   );
 };
 
-export default Home;
+export default Landmarks;
 
 // get landmarks from ethereum on the  server side before the
 // client renders

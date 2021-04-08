@@ -3,6 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/camera/camera": "pages/camera/camera.js",
-  "/landmarks/landmarks": "pages/landmarks/landmarks.js",
   "/": "pages/index.js"
 }
