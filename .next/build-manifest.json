@@ -29,10 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/camera/camera": [
+    "/landmarks/landmarks": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/camera/camera.js"
+      "static/chunks/pages/landmarks/landmarks.js"
     ]
   },
   "ampFirstPages": []

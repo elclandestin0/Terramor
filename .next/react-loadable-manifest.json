@@ -2,195 +2,35 @@
   "../../components/Layout": [
     {
       "id": "./components/Layout.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./ethereum/artifacts/contracts/Landmark.sol/TerraCoin.json",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./ethereum/terraCoin.js",
-      "file": "static/chunks/3.js"
+      "file": "static/chunks/6.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
-      "file": "static/chunks/3.js"
+      "file": "static/chunks/6.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js",
-      "file": "static/chunks/3.js"
+      "file": "static/chunks/6.js"
     },
     {
       "id": "./node_modules/@material-ui/icons/CameraAlt.js",
-      "file": "static/chunks/3.js"
+      "file": "static/chunks/6.js"
     },
     {
       "id": "./node_modules/@material-ui/icons/Map.js",
-      "file": "static/chunks/3.js"
+      "file": "static/chunks/6.js"
     },
     {
       "id": "./node_modules/@material-ui/icons/Room.js",
-      "file": "static/chunks/3.js"
+      "file": "static/chunks/6.js"
     },
     {
       "id": "./node_modules/@material-ui/icons/utils/createSvgIcon.js",
-      "file": "static/chunks/3.js"
+      "file": "static/chunks/6.js"
     },
     {
-      "id": "./node_modules/next-routes/dist/index.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next-routes/node_modules/path-to-regexp/index.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/client/link.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/client/normalize-trailing-slash.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/client/request-idle-callback.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/client/route-loader.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/client/router.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/client/use-intersection.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/client/with-router.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/i18n/normalize-locale-path.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/mitt.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router-context.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router/router.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router/utils/format-url.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router/utils/get-asset-path-from-route.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router/utils/is-dynamic.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router/utils/parse-relative-url.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router/utils/querystring.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router/utils/resolve-rewrites-noop.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router/utils/route-matcher.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/router/utils/route-regex.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/lib/utils.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/dist/next-server/server/denormalize-page-path.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/link.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/arrayLikeToArray.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/arrayWithHoles.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/construct.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/interopRequireDefault.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/interopRequireWildcard.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/iterableToArrayLimit.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/nonIterableRest.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/setPrototypeOf.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/slicedToArray.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/typeof.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./node_modules/next/router.js",
-      "file": "static/chunks/3.js"
-    },
-    {
-      "id": "./routes.js",
-      "file": "static/chunks/3.js"
+      "id": "./node_modules/next/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js",
+      "file": "static/chunks/6.js"
     }
   ],
   "../components/Layout": [
@@ -6401,96 +6241,6 @@
     {
       "id": "./node_modules/next/dist/client/dev/noop.js",
       "file": "static/chunks/0.js"
-    }
-  ],
-  "react-qr-reader": [
-    {
-      "id": "./node_modules/react-qr-reader/lib/createBlob.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/react-qr-reader/lib/errors.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/react-qr-reader/lib/getDeviceId.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/react-qr-reader/lib/havePropsChanged.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/react-qr-reader/lib/index.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/rtcpeerconnection-shim/rtcpeerconnection.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/sdp/sdp.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/adapter_core.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/adapter_factory.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/chrome/chrome_shim.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/chrome/getdisplaymedia.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/chrome/getusermedia.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/common_shim.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/edge/edge_shim.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/edge/filtericeservers.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/edge/getdisplaymedia.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/edge/getusermedia.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/firefox/firefox_shim.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/firefox/getdisplaymedia.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/firefox/getusermedia.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/safari/safari_shim.js",
-      "file": "static/chunks/5.js"
-    },
-    {
-      "id": "./node_modules/webrtc-adapter/src/js/utils.js",
-      "file": "static/chunks/5.js"
     }
   ]
 }
