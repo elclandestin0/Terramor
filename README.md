@@ -3,7 +3,7 @@
 Welcome to Terramor! This decentralized application is made with React, Solidity and love. It allows the user to explore, scan, earn TerraCoins and enjoy the landmarks around them! The TerraCoin is powered by the [ERC20 standard from OZ](https://docs.openzeppelin.com/contracts/2.x/api/token/erc20) and is deployed on the Rinkeby TestNet, so it has no real world value. [Demonstration of the app can be found here.](https://www.youtube.com/watch?v=xBLWArsydFE)
 
 ## Components
-![Top Nav Bar](https://www.dropbox.com/s/jbbqfx9htdvaxj1/Camera.png?raw=1)
+![Top Nav Bar](https://ucb47f36380c6ca111ac0071ca7f.dl.dropboxusercontent.com/cd/0/inline/BMXCQcE0lZoSsNamdku7rH0MUj4Yg3aBCb7YOem8W1IUtbjbEIepOpiEU2o-CjZG4XoMJ3kVgUF1KTHE-7-dnFSUFqs0pL2tVg1FUHantD8mqAy_T7ize99zc2knilDxBPNBYUyUD4oCGR8jG_OAeY11/file#)
 The top navigational bar shows the address currently being used by web3 on the top left, while the top right shows the account balance in TerraCoins of the respective account.  
 
 To see the Landmarks around you, head on over to the map page. It is the index page you begin with but you can also find it on the left button in the bottom navigational bar. Tapping on the markers will show you an image along with how much the Landmark is worth in TerraCoins. 
