@@ -5,7 +5,7 @@ Welcome to Terramor! This decentralized application is made with React, Solidity
 ## Components
 The top navigational bar shows the address currently being used by web3 on the top left, while the top right shows the account balance in TerraCoins of the respective account.
 
-![Top Nav Bar](https://uc32d5de5d4372371e8878319b08.dl.dropboxusercontent.com/cd/0/inline/BMVGn4qWRKOO4BfgLQttnUpdn6MNfYsqOcIJD6Z1Z4n979oj2KIGnflRZ9GVRD037hl43S_TqhtgfbD_tYCUMTXjyPxnmYqHgEjPdqZKQCekl2Nldvmqudi1fWpd1_Xo1zYyAlvHWFw5btMvjxA8itr6/file#)
+![Top Nav Bar](https://uc751501b05f7e6bd7eed1d89d69.dl.dropboxusercontent.com/cd/0/inline/BMh7L2BNHwrWwwIcCGx9NBpJz1RI65GxqecR_YwAH9IPb-36oXXmsmbCD09nFWaKgka5NAnhQrB8c73JmCog30nRwiKMB9HnvhUbUhKgn4Jesz0RLb_KJPsHzpR0mNdP_rgTrkF2kbCQh83-u_c-ywsk/file#)
 
 To see the Landmarks around you, head on over to the map page. It is the index page you begin with but you can also find it on the left button in the bottom navigational bar. 
 
