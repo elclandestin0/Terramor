@@ -35,8 +35,8 @@ When that passes, a QR code is generated and you can save it (screenshot for now
 Finally, the middle button is the camera for, you guessed it, the QR Code scanner! 
 When the user finds the Landmark QR code, they can scan it for the predetermined token worth!
 
-![Scanning QRCode](qrcodescanner.gif)
+![Scanning QRCode](./readme_resources/qrcodescanner.gif)
 
  The QR codes in the test run were placed in areas where the users can enjoy the view, as demonstrated by Adham here.
 
- ![Adham enjoying view](adham.gif)
+ ![Adham enjoying the view](./readme_resources/adham.gif)
