@@ -266,8 +266,8 @@ contract Landmark is TerraCoin {
         );
         require(uniqueHash == _uniqueHash, "Not a unique hash!");
         TerraCoin tc = TerraCoin(0xd71a2a5e29b39C55337085031f56A7640D6F1767);
-        tc.transfer(msg.sender, tokenWorth_);
         _userDiscovered[msg.sender] = true;
+        tc.transfer(msg.sender, tokenWorth_);
         emit LandmarkScanned(msg.sender, landmarkName_, latLng_, tokenWorth_);
     }
 

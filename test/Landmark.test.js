@@ -2,9 +2,9 @@ const assert = require("assert");
 
 // ganache is used for our local test network
 const ganache = require("ganache-cli");
-const Web3 = require("web3");
 
-// we iss
+// creating Web3 and injecting it with a ganache provider
+const Web3 = require("web3");
 const ganacheProvider = ganache.provider();
 const web3 = new Web3(ganacheProvider);
 
